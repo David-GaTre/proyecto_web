@@ -5,7 +5,7 @@ All dependencies will be installed using.
 npm install
 ```
 
-Be sure to instal sqlite3 to make the connections correctly.
+Be sure to instal sqlite3 to make the connections correctly. If any doubts, follow this guide: https://www.tutorialspoint.com/sqlite/sqlite_installation.htm
 
 Everything is made using Javascript ES6, but can be changed to ES5.
 
