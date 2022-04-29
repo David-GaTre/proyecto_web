@@ -19,3 +19,4 @@ npm install -g nodemon
 
 To run the program just use `npm run devbabel`
 
+In case there is any problem with `babel-node` run `npm i -g @babel/node` to install babel globally.
