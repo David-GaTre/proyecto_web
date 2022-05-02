@@ -1,0 +1,6 @@
+.container ol {
+    font-weight: bold;
+  }
+  .container ol ol {
+    font-weight: normal;
+  }
