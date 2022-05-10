@@ -2,28 +2,21 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
-import AppDAO from './api/database/dao';
-import UserRepository from './api/database/user_repository';
+import tables from './api/database/create_tables'
+
+import userRouter from './api/routes/users.routes'
 
 const app = express();
+tables.createAllTables();
 
 // Middleware
 app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(express.static(path.join(__dirname, 'public')));
-
-// Database example
-const dao = new AppDAO('./api/database/database.sqlite3')
-const userRepo = new UserRepository(dao)
-
-userRepo.createTable()
-//  .then(() => userRepo.create("David Garcia")) Run this to create a user called whatever
-//  .then(() => userRepo.getById(1));
-
 
 // Rutas API
+app.use('/users', userRouter);
 
 // Rutas
 app.get('/', (req, res) => {
@@ -35,7 +28,7 @@ const history = require('connect-history-api-fallback');
 app.use(history());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('puerto', process.env.PORT || 3000);
-app.listen(app.get('puerto'), () => {
-  console.log('Example app listening on port'+ app.get('puerto'));
+app.set('port', process.env.PORT || 3000);
+app.listen(app.get('port'), () => {
+  console.log('Example app listening on port'+ app.get('port'));
 });
