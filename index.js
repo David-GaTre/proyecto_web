@@ -2,8 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
-import AppDAO from './database/dao';
-import UserRepository from './database/user_repository';
+import AppDAO from './api/database/dao';
+import UserRepository from './api/database/user_repository';
 
 const app = express();
 
@@ -15,12 +15,15 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // Database example
-const dao = new AppDAO('./database/database.sqlite3')
+const dao = new AppDAO('./api/database/database.sqlite3')
 const userRepo = new UserRepository(dao)
 
 userRepo.createTable()
 //  .then(() => userRepo.create("David Garcia")) Run this to create a user called whatever
 //  .then(() => userRepo.getById(1));
+
+
+// Rutas API
 
 // Rutas
 app.get('/', (req, res) => {
