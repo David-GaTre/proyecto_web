@@ -40,3 +40,11 @@
 .verde-fondo{
     background-color: #00B800
 }
+.list-group-mine .list-group-item {
+    background-color: #EBEBEB;
+  }
+  
+.list-group-mine .list-group-item:hover {
+    background-color: #4062BB;
+    color: #EBEBEB;
+}
