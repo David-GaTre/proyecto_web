@@ -1,0 +1,20 @@
+
+.cardInfoContainer .cardButton{
+    width:100%;
+}
+
+.cardImage{
+    width: 100%;
+    padding-left: 64%;
+    height:  25%;
+    background-color: burlywood;
+}
+
+.cardTextInfo{
+    font-weight: 300;
+}
+
+.cardBodyInfo{
+    background-color: gray;
+    width: 100%;
+}
