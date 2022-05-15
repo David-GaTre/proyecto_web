@@ -13,23 +13,23 @@
             <div id="homeTop" style="list-style-type: none;">
                 <!-- Top: logo, user, pass, login -->
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-xl-5 col-md-11">
                         <!-- logo de la empresa -->
                         <img style="width:450;height:150px;" v-bind:src="logo" aria-label= "logo de la app">
                     </div>
-                    <div class="col-2">
+                    <div class="col-xl-2 col-md-3">
                         <!-- textbox usuario -->
                         <br>
                         <br>
                         <input v-model="user" placeholder="Username" />
                     </div>
-                    <div class="col-2">
+                    <div class="col-xl-2 col-md-3">
                         <!-- textbox password -->
                         <br>
                         <br>
                         <input type="password" v-model="pass" placeholder="Password" />
                     </div>
-                    <div class="col-2">
+                    <div class="col-xl-2 col-md-3">
                         <!-- boton login -->
                         <br>
                         <br>
@@ -42,135 +42,135 @@
             <div id="homeBot" style="list-style-type: none;">
                 <!-- Bot: imagen, descripcion, registro -->
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-xl-6 col-lg-10">
                         <!-- imagen y descripcion -->
                         <br>
                         <div class="row">
                             <!-- imagen -->
-                            <div class="col-1">
+                            <div class="col-xl-1">
                             </div>
-                            <div class="col-10">
+                            <div class="col-xl-10">
                                 <br>
                                 <img style="width:500;height:500px;" v-bind:src="img" aria-label= "imagen de fondo">
                             </div>
-                            <div class="col-1">
+                            <div class="col-xl-1">
                             </div>
                         </div>
                         <div class="row">
                             <!-- descripcion -->
-                            <div class="col-1">
+                            <div class="col-xl-1">
                             </div>
-                            <div class="col-10">
+                            <div class="col-xl-10">
                                 <br>
                                 <p>{{ desc }}</p>
                             </div>
-                            <div class="col-1">
+                            <div class="col-xl-1">
                             </div>
                         </div>
                     </div>
-                    <div class="col-5">
+                    <div class="col-xl-5 col-lg-10">
                         <!-- registro -->
                         <br>
                         <div id="registro">
                             <div class="row">
                                 <!-- nombre -->
-                                <div class="col-1">
+                                <div class="col-xl-1">
                                 </div>
-                                <div class="col-10">
+                                <div class="col-xl-10">
                                     <br>
                                     <p>Nombre</p>
                                     <input v-model="nombre"/>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-xl-1">
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <!-- correo -->
-                                <div class="col-1">
+                                <div class="col-xl-1">
                                 </div>
-                                <div class="col-10">
+                                <div class="col-xl-10">
                                     <p>Correo</p>
                                     <input v-model="correo"/>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-xl-1">
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <!-- fecha de nacimiento -->
-                                <div class="col-1">
+                                <div class="col-xl-1">
                                 </div>
-                                <div class="col-10">
+                                <div class="col-xl-10">
                                     <div class="row">
                                         <p>Fecha de nacimiento</p>
-                                        <div class="col-3">
+                                        <div class="col-xl-3 col-lg-5 col-md-11">
                                             <!-- año -->
                                             <p>Año</p>
                                             <input v-model="año"/>
                                         </div>
-                                        <div class="col-1">
+                                        <div class="col-xl-1 col-lg-none">
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-xl-3 col-lg-5 col-md-11">
                                             <!-- mes -->
                                             <p>Mes</p>
                                             <input v-model="mes"/>
                                         </div>
-                                        <div class="col-1">
+                                        <div class="col-xl-1 col-lg-none">
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-xl-3 col-lg-11 col-md-11">
                                             <!-- dia -->
                                             <p>Dia</p>
                                             <input v-model="dia"/>
                                         </div>
-                                        <div class="col-1">
+                                        <div class="col-xl-1">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-xl-1">
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <!-- contraseña -->
-                                <div class="col-1">
+                                <div class="col-xl-1">
                                 </div>
-                                <div class="col-10">
+                                <div class="col-xl-10">
                                     <p>Contraseña</p>
                                     <input type="password" v-model="pass"/>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-xl-1">
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <!-- confirmar contraseña -->
-                                <div class="col-1">
+                                <div class="col-xl-1">
                                 </div>
-                                <div class="col-10">
+                                <div class="col-xl-10">
                                     <p>Confirmar Contraseña</p>
                                     <input type="password" v-model="passcon"/>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-xl-1">
                                 </div>
                                 <br>
                             </div>
                             <br>
                             <div class="row">
                                 <!-- boton registrarse -->
-                                <div class="col-5">
+                                <div class="col-xl-5">
                                 </div>
-                                <div class="col-2">
+                                <div class="col-xl-2">
                                     <button class="btn btn-primary" v-on:click="">{{ registro }}</button>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-xl-5">
                                 </div>
                                 <br>
                             </div>
                             <br>
                         </div>
                     </div>
-                    <div class="col-1">
+                    <div class="col-xl-1">
                     </div>
                 </div>
             </div>
