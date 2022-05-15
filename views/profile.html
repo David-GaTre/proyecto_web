@@ -10,22 +10,24 @@
     <body>
         <main>
             <div id="header">
+                <!-- borrar estos breaks al incorporar el header -->
                 <br>
                 <br>
                 <br>
                 <br>
                 <br>
+                <!-- borrar estos breaks al incorporar el header -->
             </div>
             <div id="perfil" style="list-style-type: none;">
                 <!-- Row 1 Foto y Primer Set de Datos -->
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-xl-3 col-xs-9">
                     </div>
-                    <div class="col-3">
+                    <div class="col-xl-3 col-xs-9">
                         <!-- Foto de Perfil -->
                         <img style="width:150px;height:150px;border-radius: 50%;" v-bind:src="img" aria-label= "Foto de perfil del usuario">
                     </div>
-                    <div class="col-6">
+                    <div class="col-xl-6 col-xs-12">
                         <!-- Nombre, Correo, Fecha de Nacimiento -->
                         <li v-for="msg in bucld1">
                             {{ msg.datos }}
@@ -43,13 +45,13 @@
                 <!-- Row 2 Boton Editar y Balance -->
                 <br>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-xl-3">
                     </div>
-                    <div class="col-3">
+                    <div class="col-xl-3">
                         <!-- Boton Editar -->
                         <button class="btn btn-primary">{{ edit }}</button>
                     </div>
-                    <div class="col-6">
+                    <div class="col-xl-6">
                         <!-- Balance -->
                         <li v-for="msg in bucl2">
                             {{ msg.balance }}
@@ -59,19 +61,19 @@
                 <!-- Row 3 Boton Pagos, Creados y Tomados -->
                 <br>
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-xl-3">
                     </div>
-                    <div class="col-3">
+                    <div class="col-xl-3">
                         <!-- Boton Metodos de Pago -->
                         <button class="btn btn-primary">{{ pago }}</button>
                     </div>
-                    <div class="col-3">
+                    <div class="col-xl-3">
                         <!-- Tickets Creados -->
                         <li v-for="msg in bucl3">
                             {{ msg.creados }}
                         </li>
                     </div>
-                    <div class="col-3">
+                    <div class="col-xl-3">
                         <!-- Tickets Resuletos -->
                         <li v-for="msg in bucl4">
                             {{ msg.resueltos }}
