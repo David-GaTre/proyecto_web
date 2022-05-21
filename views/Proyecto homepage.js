@@ -32,7 +32,8 @@ const homeTop = Vue.createApp({
     methods: {
         handleSubmit() {
             if (this.pass == this.passcon) {
-                equal = true;
+                this.equal = true;
+                console.log(this.equal);
                 axios
               .post("http://localhost:3000/users", { //aqui va la db
                 nombre: this.nombre,
@@ -51,10 +52,10 @@ const homeTop = Vue.createApp({
                 this.mes = "";
                 this.dia = "";
                 this.pass = "";
-                equal = false;
+                this.equal = false;
               });
             } else {
-                equal = false;
+                this.equal = false;
             }  
         },
    }
