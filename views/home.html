@@ -71,7 +71,7 @@
                     <div class="col-xl-5 col-lg-10">
                         <!-- registro -->
                         <br>
-                        <div id="registro">
+                        <div id="registro" @submit.prevent="handleSubmit">
                             <div class="row">
                                 <!-- nombre -->
                                 <div class="col-xl-1">
@@ -166,6 +166,8 @@
                                 <div class="col-xl-5">
                                 </div>
                                 <br>
+                                <p v-if="equal">Usuario creado exitosamente</p>
+                                <p v-if="!equal">Error, las contraseñas no son iguales</p>
                             </div>
                             <br>
                         </div>

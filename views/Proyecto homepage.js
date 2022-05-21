@@ -25,11 +25,38 @@ const homeTop = Vue.createApp({
             dia: '',
             pass: '',
             passcon: '',
-            registro: 'Registrarme!'
+            registro: 'Registrarme!',
+            equal: false
         }
     },
     methods: {
-
-    },
+        handleSubmit() {
+            if (this.pass == this.passcon) {
+                equal = true;
+                axios
+              .post("http://localhost:3000/users", { //aqui va la db
+                nombre: this.nombre,
+                correo: this.correo,
+                año: this.año,
+                mes: this.mes,
+                dia: this.dia,
+                pass: this.pass
+              })
+              .then((response) => {
+                const data = response.data;
+                this.users.push(data); //tabla de la db
+                this.nombre = "";
+                this.correo = "";
+                this.año = "";
+                this.mes = "";
+                this.dia = "";
+                this.pass = "";
+                equal = false;
+              });
+            } else {
+                equal = false;
+            }  
+        },
+   }
  });
  homeBot.mount('#homeBot')
