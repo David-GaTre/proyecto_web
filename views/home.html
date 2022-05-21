@@ -161,13 +161,13 @@
                                 <div class="col-xl-5">
                                 </div>
                                 <div class="col-xl-2">
-                                    <button class="btn btn-primary" v-on:click="">{{ registro }}</button>
+                                    <button class="btn btn-primary" @click="handleSubmit">{{ registro }}</button>
                                 </div>
                                 <div class="col-xl-5">
                                 </div>
                                 <br>
                                 <p v-if="equal">Usuario creado exitosamente</p>
-                                <p v-if="!equal">Error, las contraseñas no son iguales</p>
+                                <p v-if="!equal">Las contraseñas deben ser iguales</p>
                             </div>
                             <br>
                         </div>
