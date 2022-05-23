@@ -1,3 +1,5 @@
+
+
 const homeTop = Vue.createApp({
     data(){
         return{
@@ -32,32 +34,28 @@ const homeTop = Vue.createApp({
     methods: {
         handleSubmit() {
             if (this.pass == this.passcon) {
-                this.equal = true;
-                console.log(this.equal);
-                axios
-              .post("http://localhost:3000/users", { //aqui va la db
-                nombre: this.nombre,
-                correo: this.correo,
-                año: this.año,
-                mes: this.mes,
-                dia: this.dia,
-                pass: this.pass
-              })
-              .then((response) => {
-                const data = response.data;
-                this.users.push(data); //tabla de la db
-                this.nombre = "";
-                this.correo = "";
-                this.año = "";
-                this.mes = "";
-                this.dia = "";
-                this.pass = "";
-                this.equal = false;
-              });
-            } else {
-                this.equal = false;
-            }  
-        },
+                var url = 'http://localhost:3000/users';
+                var data = {  name: this.nombre,
+                    email: this.correo,
+                    birth_day: this.año + '-' + this.mes + '-' + this.dia,
+                    password: this.pass
+                };
+
+                fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data), 
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+                }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => console.log('Success:', response) )
+                .then(() => this.equal=true);
+
+                } else {
+                    this.equal = false;
+                }  
+            },
    }
  });
  homeBot.mount('#homeBot')

@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
-import tables from './api/database/create_tables'
+import tables from './api/database/create_tables';
 
 import userRouter from './api/routes/users.routes'
 
@@ -15,12 +15,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.set('view engine', 'ejs');
+
 // Rutas API
 app.use('/users', userRouter);
 
 // Rutas
+app.use(express.static(__dirname + '/views'));
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.render('pages/home');
 });
 
 // Middleware para Vue.js router modo history

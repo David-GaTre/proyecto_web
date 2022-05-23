@@ -1,4 +1,6 @@
 import Header from './components/header.js'
+import axios from "axios"
+
 const App = {
   el: 'main',
   components: {
