@@ -19,9 +19,14 @@ function query_no_params(sql) {
     return db.prepare(sql).all();
 }
 
+function getOne(sql, params) {
+  return db.prepare(sql).get(params);
+}
+
 module.exports = {
   query,
   run,
   exec,
-  query_no_params
+  query_no_params,
+  getOne
 }

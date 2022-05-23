@@ -48,11 +48,18 @@ function getById(id) {
   return { data }
 }
 
+function getByEmailAndPass(userParams) {
+  const {user, pass} = userParams;
+  const data = db.getOne(`SELECT * FROM users WHERE email = ? and password = ?`, [user, pass]);
+  return { data }
+}
+
 module.exports = {
   createTable,
   getAll,
   create,
   update,
   deleteById,
-  getById
+  getById,
+  getByEmailAndPass
 }

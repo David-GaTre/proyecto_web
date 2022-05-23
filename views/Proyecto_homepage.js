@@ -1,5 +1,3 @@
-
-
 const homeTop = Vue.createApp({
     data(){
         return{
@@ -7,10 +5,23 @@ const homeTop = Vue.createApp({
             user: '',
             pass: '',
             login: 'login',
+            user_data: '',
+            found: false
         }
     },
-    methods: {
 
+    methods: {
+        handleLogin() {
+            var u_data
+            var url = 'http://localhost:3000/users/user_check/' + this.user + '&' + this.pass;
+
+            fetch(url)
+            .then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(data => u_data = data)
+            .then(() => document.cookie = "user_id=" + u_data.data.id)
+            .then(() => window.location.replace("http://localhost:3000/profile"))
+        },
     },
  });
  homeTop.mount('#homeTop')

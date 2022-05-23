@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
   res.render('pages/home');
 });
 
+app.get('/profile', (req, res) => {
+  res.render('pages/profile');
+});
+
 // Middleware para Vue.js router modo history
 const history = require('connect-history-api-fallback');
 app.use(history());
