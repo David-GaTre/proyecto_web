@@ -50,7 +50,8 @@ function update(ticketObj, ticketParams) {
   return { data }
 }
 
-function completeTicket(id) {
+function completeTicket(ticketParams) {
+  const {id} = ticketParams
   const data = db.run(`UPDATE tickets 
                         SET completed = 1
                         WHERE id = ?`,[id]);

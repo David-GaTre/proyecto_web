@@ -32,7 +32,16 @@ router.get('/:id', function(req, res, next) {
 
 router.put('/:id', function(req, res, next) {
   try {
-    res.json(tickets.getById(req.body, req.params));
+    res.json(tickets.update(req.body, req.params));
+  } catch(err) {
+    console.error(`Error occured: `, err.message);
+    next(err);
+  }
+});
+
+router.put('/:id/complete', function(req, res, next) {
+  try {
+    res.json(tickets.completeTicket(req.params));
   } catch(err) {
     console.error(`Error occured: `, err.message);
     next(err);
