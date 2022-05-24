@@ -9,6 +9,11 @@ function createTable() {
           email TEXT,
           birth_day TEXT,
           password TEXT)`)
+  try {
+    db.exec("ALTER TABLE users ADD COLUMN balance REAL;")
+  } catch(e) {
+    console.log('Already created the column')
+  }
 }
 
 function getAll() {
