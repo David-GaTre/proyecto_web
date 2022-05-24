@@ -20,6 +20,7 @@ app.set('view engine', 'ejs');
 // Rutas API
 app.use('/users', userRouter);
 
+
 // Rutas
 app.use(express.static(__dirname + '/views'));
 app.get('/', (req, res) => {

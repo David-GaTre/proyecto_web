@@ -30,5 +30,14 @@ router.get('/user_check/:user&:pass', function(req, res, next) {
   }
 });
 
+router.get('/user_check/:id', function(req, res, next) {
+  try {
+    res.json(users.getById(req.params));
+  } catch(err) {
+    console.error(`Error occured: `, err.message);
+    next(err);
+  }
+});
+
 
 module.exports = router;

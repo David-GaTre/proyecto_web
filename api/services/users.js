@@ -48,7 +48,8 @@ function deleteById(id) {
   return { data }
 }
 
-function getById(id) {
+function getById(userParams) {
+  const {id} = userParams;
   const data = db.query(`SELECT * FROM users WHERE id = ?`, [id]);
   return { data }
 }
