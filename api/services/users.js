@@ -36,7 +36,9 @@ function create(userObj) {
   return {message};
 }
 
-function update(id, name, email, bday, pass) {
+function update(userObj, userParams) {
+  const {id} = userParams
+  const {name, email, bday, pass} = userObj
   const data = db.run(`UPDATE users 
                         SET name = ?, email = ?, birth_day = ?, password = ?
                         WHERE id = ?`,[name, email, bday, pass, id]);

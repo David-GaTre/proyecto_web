@@ -5,6 +5,7 @@ import path from 'path';
 import tables from './api/database/create_tables';
 
 import userRouter from './api/routes/users.routes'
+import ticketRouter from './api/routes/tickets.routes'
 
 const app = express();
 tables.createAllTables();
@@ -19,7 +20,7 @@ app.set('view engine', 'ejs');
 
 // Rutas API
 app.use('/users', userRouter);
-
+app.use('/tickets', ticketRouter)
 
 // Rutas
 app.use(express.static(__dirname + '/views'));
