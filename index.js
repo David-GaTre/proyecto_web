@@ -36,6 +36,10 @@ app.get('/ticket/new', (req, res) => {
   res.render('pages/ticket');
 });
 
+app.get('/ticket_view', (req, res) => {
+  res.render('pages/ticketView');
+});
+
 // Middleware para Vue.js router modo history
 const history = require('connect-history-api-fallback');
 app.use(history());
