@@ -3,10 +3,13 @@
         <title>Hacer ticket</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="../Style/color_palette.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://unpkg.com/vue@3"></script>
     </head>
     <body style="background-color:rgb(237, 239, 240);">
         <!-- Header -->
         <main>
+        <div id="ticket">
         <div id = "header">
             <nav class="navbar navbar-expand-sm navbar-dark azul-fondo flex-sm-nowrap flex-wrap">
                 <div class="container-fluid">
@@ -18,10 +21,10 @@
                     <div class="navbar-collapse collapse flex-grow-1 justify-content-right" id="navbar5">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="/profile">Usuario</a>
+                                <a class="nav-link text-white" href="#">Usuario</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="/">Cerrar sesion</a>
+                                <a class="nav-link text-white" href="#">Cerrar sesion</a>
                             </li>
                             <li class="nav-item">
                             </li>
@@ -36,10 +39,10 @@
                     <div class = "col-2" id = "side-bar">
                         <div class="border-end h-100 blanco-fondo">
                             <div class="list-group list-group-mine">
-                                <a class="list-group-item  p-3 azul-fondo" href="/">Homepage</a>
-                                <a class="list-group-item list-group-item-action p-3 azul-fondo" href="/profile">Perfil</a>
-                                <a class="list-group-item list-group-item-action p-3 azul-fondo" href="/ticket/new">Hacer un pedido</a>
-                                <a class="list-group-item list-group-item-action p-3 azul-fondo" href="/">Cerrar sesion</a>
+                                <a class="list-group-item  p-3 azul-fondo" href="#!">Homepage</a>
+                                <a class="list-group-item list-group-item-action p-3 azul-fondo" href="#!">Perfil</a>
+                                <a class="list-group-item list-group-item-action p-3 azul-fondo" href="#!">Hacer un pedido</a>
+                                <a class="list-group-item list-group-item-action p-3 azul-fondo" href="#!">Cerrar sesion</a>
                             </div>
                         </div>
                     </div>
@@ -48,18 +51,17 @@
                         <!-- Titulo -->
                         <p> Titulo * </p>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            <input v-model="title" type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="basic-addon1">
                         </div>
                     </div>
                     <div class="row">
                         <!-- Tipo de favor -->
                         <p> Tipo de favor * </p>
                         <div class="input-group mb-3">
-                            <select class="custom-select" id="inputGroupSelect01">
-                              <option selected>Choose...</option>
-                              <option value="1">One</option>
-                              <option value="2">Two</option>
-                              <option value="3">Three</option>
+                            <select v-model="favour_type" class="custom-select" id="inputGroupSelect01">
+                              <option value="Entrega">Entrega</option>
+                              <option value="Pedido">Pedido</option>
+                              <option value="Vuelta">Vuelta</option>
                             </select>
                           </div>
                     </div>
@@ -67,7 +69,7 @@
                         <!-- Descripcion chica -->
                         <p> Descripción chica * </p>
                         <div class="input-group">
-                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                            <textarea v-model="short_desc" class="form-control" aria-label="With textarea"></textarea>
                         </div>
                     </div>
                     <br>
@@ -75,7 +77,7 @@
                         <!-- Instrucciones adicionales -->
                         <p> Instrucciones adicionales </p>
                         <div class="input-group">
-                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                            <textarea v-model="instructions" class="form-control" aria-label="With textarea"></textarea>
                         </div>
                     </div>
                     <br>
@@ -87,7 +89,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <input v-model="price" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
                                 <div class="input-group-append">
                                   <span class="input-group-text">.00</span>
                                 </div>
@@ -100,7 +102,7 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <input v-model="tips" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
                                 <div class="input-group-append">
                                   <span class="input-group-text">.00</span>
                                 </div>
@@ -118,12 +120,13 @@
                     <br>
                     <div class="row">
                         <!-- Boton crear-->
-                        <button type="button" class="btn btn-secondary" style="display:block;margin-left:auto;margin-right:auto;width:50%;">Crear</button>
+                        <button type="button" class="btn btn-secondary" style="display:block;margin-left:auto;margin-right:auto;width:50%;" @click="handleSubmitTicket">Crear</button>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
     </main>
-
+    <script src="../proyecto_ticket.js"></script>
     </body>
 </html>
