@@ -1,7 +1,7 @@
 const homeTop = Vue.createApp({
     data(){
         return{
-            logo: 'https://cdn.discordapp.com/attachments/629532011148607499/969324650750427196/unknown.png',
+            logo: 'proyecto_web/views/imgs/tecdashlogo.png',
             user: '',
             pass: '',
             login: 'login',
@@ -29,27 +29,27 @@ const homeTop = Vue.createApp({
  const homeBot = Vue.createApp({
     data(){
         return{
-            img: 'https://cdn.discordapp.com/attachments/629532011148607499/969324696434782209/unknown.png',
-            desc: 'desc temp',
+            img: 'https://cdn.discordapp.com/attachments/629532011148607499/978822838842708028/20220524_194639.jpg',
+            desc: 'TecDash es una aplicación web la cual le permite a estudiantes y colaboradores del tec pedir favores a otras personas dentro del campus. ',
             nombre: '',
             correo: '',
-            año: '',
-            mes: '',
-            dia: '',
+            fecha: '',
             pass: '',
             passcon: '',
             registro: 'Registrarme!',
-            equal: false
+            equal: false,
+            boton: false
         }
     },
     methods: {
         handleSubmit() {
+            this.boton = true;
             if (this.pass == this.passcon) {
                 var url = 'http://localhost:3000/users';
                 var data = {  name: this.nombre,
                     email: this.correo,
-                    birth_day: this.año + '-' + this.mes + '-' + this.dia,
-                    password: this.pass
+                    birth_day: this.fecha,
+                    password: this.pass,
                 };
 
                 fetch(url, {
