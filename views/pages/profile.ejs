@@ -58,17 +58,14 @@
                     </div>
                     <div class="col-xl-6 col-xs-12">
                         <!-- Nombre, Correo, Fecha de Nacimiento -->
-                        <li v-for="msg in bucld1">
-                            {{ msg.datos }}
-                        </li>
+                        <h5>{{tnombre}}</h5>
+                        <h5>{{nombre}}</h5>
                         <br>
-                        <li v-for="msg in bucld2">
-                            {{ msg.datos }}
-                        </li>
+                        <h5>{{tcorreo}}</h5>
+                        <h5>{{correo}}</h5>
                         <br>
-                        <li v-for="msg in bucld3">
-                            {{ msg.datos }}
-                        </li>
+                        <h5>{{tfecha}}</h5>
+                        <h5>{{fecha}}</h5>
                     </div>
                 </div>
                 <!-- Row 2 Boton Editar y Balance -->
@@ -78,13 +75,12 @@
                     </div>
                     <div class="col-xl-3">
                         <!-- Boton Editar -->
-                        <button class="btn btn-primary">{{ edit }}</button>
+                        <button class="btn btn-primary">Editar</button>
                     </div>
                     <div class="col-xl-6">
                         <!-- Balance -->
-                        <li v-for="msg in bucl2">
-                            {{ msg.balance }}
-                        </li>
+                        <h5>{{tbalance}}</h5>
+                        <h5>{{balance}}</h5>
                     </div>
                 </div>
                 <!-- Row 3 Boton Pagos, Creados y Tomados -->
@@ -94,19 +90,17 @@
                     </div>
                     <div class="col-xl-3">
                         <!-- Boton Metodos de Pago -->
-                        <button class="btn btn-primary">{{ pago }}</button>
+                        <button class="btn btn-primary">Metodos de pago</button>
                     </div>
                     <div class="col-xl-3">
                         <!-- Tickets Creados -->
-                        <li v-for="msg in bucl3">
-                            {{ msg.creados }}
-                        </li>
+                        <h5>{{tcreados}}</h5>
+                        <h5>{{creados}}</h5>
                     </div>
                     <div class="col-xl-3">
                         <!-- Tickets Resuletos -->
-                        <li v-for="msg in bucl4">
-                            {{ msg.resueltos }}
-                        </li>
+                        <h5>{{tresueltos}}</h5>
+                        <h5>{{resueltos}}</h5>
                     </div>
                 </div>
             </div>

@@ -1,34 +1,43 @@
 const perfil = Vue.createApp({
+    created() {
+        this.handleDisplay();
+    },
     data(){
         return{
-            edit: "Editar",
-            pago: "Metodos de pago",
+            edit: 'Editar',
+            pago: 'Metodos de pago',
             img: 'https://cdn.discordapp.com/attachments/629532011148607499/931379101833527366/20220113_204305.jpg',
-            bucld1:[
-                { datos:"Nombre" },
-                { datos:"Diego Rodriguez" },
-            ],
-            bucld2:[
-                { datos:"Correo" },
-                { datos:"A01197185@tec.mx" },
-            ],
-            bucld3:[
-                { datos:"Fecha de nacimiento" },
-                { datos:"31 de agosto de 1999" },
-            ],
-            bucl2:[
-                { balance:"Balance" },
-                { balance:"$100" },
-            ],
-            bucl3:[
-                { creados:"Tickets Creados" },
-                { creados:"3" },
-            ],
-            bucl4:[
-                { resueltos:"Tickets Resueltos" },
-                { resueltos:"10" },
-            ],   
+            tnombre: 'Nombre',
+            nombre: ' ',
+            tcorreo: ' ',
+            correo: ' ',
+            tfecha: ' ',
+            fecha: ' ',
+            tbalance: 'Balance',
+            balance: ' ',
+            tcreados: 'Tickets Creados',
+            creados: ' ',
+            tresueltos: 'Tickets Resueltos',
+            resueltos: ' ',
+            id: ' '  
         }
-    }
+    },
+    methods: {
+        handleDisplay() {
+            var url = 'http://localhost:3000/users/user_check/' + document.cookie.substring(document.cookie.indexOf("=") + 1);
+            fetch(url)
+            .then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then((data) => {
+                const {name, email, date, balance, tickets, completeTicket} = data.data[0];
+                this.nombre = name;
+                this.correo = email;
+                this.fecha = date;
+                this.balance = balance;
+                this.creados = tickets;
+                this.resueltos = completeTicket;
+            })
+        }
+    },
  });
  perfil.mount('#perfil')
