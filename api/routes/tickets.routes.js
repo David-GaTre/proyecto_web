@@ -11,6 +11,15 @@ router.get('/', function(req, res, next) {
   }
 });
 
+router.get('/uncompleted', function(req, res, next) {
+  try {
+    res.json(tickets.getAllUncompleted(req));
+  } catch(err) {
+    console.error(`Error while getting tickets `, err.message);
+    next(err);
+  }
+});
+
 router.post('/', function(req, res, next) {
     try {
       console.log(req.body)  
