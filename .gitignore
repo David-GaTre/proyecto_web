@@ -69,7 +69,7 @@ web_modules/
 # Output of 'npm pack'
 *.tgz
 
-.sqlite3
+*.sqlite3
 
 # Yarn Integrity file
 .yarn-integrity
