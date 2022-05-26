@@ -47,7 +47,11 @@
                         </div>
                     </div>
                     <div class="col" id = "app">
-                        <ticket></ticket>
+                        <div v-for = "tickets in grouped_tickets" class = "row">
+                            <div v-for = "ticket in tickets" class = "col">
+                                <ticket d = "ticket.title"></ticket>
+                            </div>
+                        </div>
 
 
                     </div>

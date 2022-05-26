@@ -1,9 +1,11 @@
 var app = Vue.createApp({
     data() {
         return {
-            userName: '',
-            userType: '',
-            childMsg: ''
+            hola: 'hola mundo',
+            grouped_tickets: [
+                [{titulo: "uno"}, {"titulo": "dos"}],
+                [{titulo: "tres"}, {"titulo": "cuatro"}]
+            ]
         }
     }
 })
