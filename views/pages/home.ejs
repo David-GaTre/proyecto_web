@@ -9,36 +9,33 @@
     </head>
     <body>
         <main>
-            <div id="homeTop" style="list-style-type: none;">
+            <div id="homeTop" style="list-style-type: none; font-family: roboto;">
                 <!-- Top: logo, user, pass, login -->
                 <div class="row">
-                    <div class="col-xl-5 col-md-11">
+                    <div class="col-xl-5 col-md-5 col-sm-11">
                         <!-- logo de la empresa -->
-                        <img style="width:450;height:150px;" v-bind:src="logo" aria-label= "logo de la app">
+                        <img src="../imgs/tecdashlogo.png" style="width:450;height:100px;" aria-label= "logo de la app">
                     </div>
-                    <div class="col-xl-2 col-md-3">
+                    <div class="col-xl-2 col-md-2 col-sm-3">
                         <!-- textbox usuario -->
                         <br>
-                        <br>
-                        <input v-model="user" placeholder="Username" />
+                        <input type="text" class="form-control" v-model="user" placeholder="Username" />
                     </div>
-                    <div class="col-xl-2 col-md-3">
+                    <div class="col-xl-2 col-md-2 col-sm-3">
                         <!-- textbox password -->
                         <br>
-                        <br>
-                        <input type="password" v-model="pass" placeholder="Password" />
+                        <input type="password" class="form-control" v-model="pass" placeholder="Password" />
                     </div>
-                    <div class="col-xl-2 col-md-3">
+                    <div class="col-xl-2 col-sm-3">
                         <!-- boton login -->
                         <br>
-                        <br>
-                        <button class="btn btn-primary" @click="handleLogin">{{ login }}</button>
+                        <button class="btn btn-primary" style="background-color:#161925" @click="handleLogin">{{ login }}</button>
                     </div>
                     <div class="col-1">
                     </div>
                 </div>
             </div>
-            <div id="homeBot" style="list-style-type: none;">
+            <div id="homeBot" style="list-style-type: none; font-family: roboto;">
                 <!-- Bot: imagen, descripcion, registro -->
                 <div class="row">
                     <div class="col-xl-6 col-lg-10">
@@ -50,7 +47,7 @@
                             </div>
                             <div class="col-xl-10">
                                 <br>
-                                <img style="width:500;height:500px;" v-bind:src="img" aria-label= "imagen de fondo">
+                                <img style="width:90%;height:90%;" v-bind:src="img" aria-label= "imagen de fondo">
                             </div>
                             <div class="col-xl-1">
                             </div>
@@ -78,7 +75,7 @@
                                 <div class="col-xl-10">
                                     <br>
                                     <p>Nombre</p>
-                                    <input v-model="nombre"/>
+                                    <input type="text" class="form-control" v-model="nombre"/>
                                 </div>
                                 <div class="col-xl-1">
                                 </div>
@@ -90,7 +87,7 @@
                                 </div>
                                 <div class="col-xl-10">
                                     <p>Correo</p>
-                                    <input v-model="correo"/>
+                                    <input type="text" class="form-control" v-model="correo"/>
                                 </div>
                                 <div class="col-xl-1">
                                 </div>
@@ -101,30 +98,8 @@
                                 <div class="col-xl-1">
                                 </div>
                                 <div class="col-xl-10">
-                                    <div class="row">
-                                        <p>Fecha de nacimiento</p>
-                                        <div class="col-xl-3 col-lg-5 col-md-11">
-                                            <!-- año -->
-                                            <p>Año</p>
-                                            <input v-model="año"/>
-                                        </div>
-                                        <div class="col-xl-1 col-lg-none">
-                                        </div>
-                                        <div class="col-xl-3 col-lg-5 col-md-11">
-                                            <!-- mes -->
-                                            <p>Mes</p>
-                                            <input v-model="mes"/>
-                                        </div>
-                                        <div class="col-xl-1 col-lg-none">
-                                        </div>
-                                        <div class="col-xl-3 col-lg-11 col-md-11">
-                                            <!-- dia -->
-                                            <p>Dia</p>
-                                            <input v-model="dia"/>
-                                        </div>
-                                        <div class="col-xl-1">
-                                        </div>
-                                    </div>
+                                    <p>Fecha de nacimiento</p>
+                                    <input type="date" class="form-control" v-model="fecha"/>
                                 </div>
                                 <div class="col-xl-1">
                                 </div>
@@ -136,7 +111,7 @@
                                 </div>
                                 <div class="col-xl-10">
                                     <p>Contraseña</p>
-                                    <input type="password" v-model="pass"/>
+                                    <input type="password" class="form-control" v-model="pass"/>
                                 </div>
                                 <div class="col-xl-1">
                                 </div>
@@ -148,7 +123,7 @@
                                 </div>
                                 <div class="col-xl-10">
                                     <p>Confirmar Contraseña</p>
-                                    <input type="password" v-model="passcon"/>
+                                    <input type="password" class="form-control" v-model="passcon"/>
                                 </div>
                                 <div class="col-xl-1">
                                 </div>
@@ -165,8 +140,8 @@
                                 <div class="col-xl-5">
                                 </div>
                                 <br>
-                                <p v-if="equal">Usuario creado exitosamente</p>
-                                <p v-if="!equal">Las contraseñas deben ser iguales</p>
+                                <p v-if="equal && boton">Usuario creado exitosamente</p>
+                                <p v-if="!equal && boton">Las contraseñas deben ser iguales</p>
                             </div>
                             <br>
                         </div>
@@ -175,6 +150,11 @@
                     </div>
                 </div>
             </div>
+            <script type="text/javascript">
+                $(function() {
+                    $('#datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
+                });
+            </script>
         </main>
         <script src="Proyecto_homepage.js"></script>
     </body>
