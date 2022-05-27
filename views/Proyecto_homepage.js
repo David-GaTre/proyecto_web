@@ -38,35 +38,38 @@ const homeTop = Vue.createApp({
             passcon: '',
             registro: 'Registrarme!',
             equal: false,
-            boton: false
         }
     },
     methods: {
         handleSubmit() {
-            this.boton = true;
-            if (this.pass == this.passcon) {
-                var url = 'http://localhost:3000/users';
-                var data = {  name: this.nombre,
-                    email: this.correo,
-                    birth_day: this.fecha,
-                    password: this.pass,
-                };
-
-                fetch(url, {
-                method: 'POST',
-                body: JSON.stringify(data), 
-                headers:{
-                    'Content-Type': 'application/json'
-                }
-                }).then(res => res.json())
-                .catch(error => console.error('Error:', error))
-                .then(response => console.log('Success:', response) )
-                .then(() => this.equal=true);
-
+            var mailformat = new RegExp("[a-zA-Z0-9]+@tec.mx");
+            if (this.correo.match(mailformat)){
+                if (this.pass == this.passcon) {
+                    var url = 'http://localhost:3000/users';
+                    var data = {  name: this.nombre,
+                        email: this.correo,
+                        birth_day: this.fecha,
+                        password: this.pass,
+                    };
+    
+                    fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify(data), 
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                    }).then(res => res.json())
+                    .catch(error => console.error('Error:', error))
+                    .then(response => console.log('Success:', response) )
+                    .then(() => this.equal=true);
                 } else {
+                    alert("Las contraseñas deben de ser iguales");
                     this.equal = false;
                 }  
-            },
-   }
+            } else {
+                alert("Correo invalido");
+            }
+        }
+    }
  });
  homeBot.mount('#homeBot')
