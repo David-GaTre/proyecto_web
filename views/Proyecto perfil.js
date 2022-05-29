@@ -1,6 +1,8 @@
 const perfil = Vue.createApp({
     created() {
         this.handleDisplay();
+        this.displayAsignedTickets();
+        this.displayCreatedTickets();
     },
     data(){
         return{
@@ -45,13 +47,35 @@ const perfil = Vue.createApp({
             .then(res => res.json())
             .catch(error => console.error('Error:', error))
             .then((data) => {
-                const {name, email, birth_day, balance, tickets, completeTicket} = data.data[0];
+                const {name, email, birth_day, balance} = data.data[0];
                 this.nombre = name;
                 this.correo = email;
                 this.fecha = birth_day;
                 this.balance = balance;
-                this.creados = tickets;
-                this.resueltos = completeTicket;
+            })
+        },
+        displayCreatedTickets() {
+            var id_user = this.getCookie('user_id')
+            var url2 = 'http://localhost:3000/tickets/asigned/' + id_user;
+            fetch(url2)
+            .then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then((data) => {
+                const num = data;
+                console.log(num)
+                this.resueltos = num;
+            })
+        },
+        displayAsignedTickets() {
+            var id_user = this.getCookie('user_id')
+            var url3 = 'http://localhost:3000/tickets/expedited/' + id_user;
+            fetch(url3)
+            .then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then((data) => {
+                const num = data;
+                console.log(num)
+                this.creados = num;
             })
         }
     },

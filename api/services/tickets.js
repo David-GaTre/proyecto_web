@@ -81,6 +81,18 @@ function getById(ticketParams) {
   return { data }
 }
 
+function countAsigned(ticketParams){
+  const {id} = ticketParams;
+  const num = db.query(`SELECT COUNT FROM tickets WHERE assigned_to = ?`, [id])
+  return { num };
+}
+
+function countExpedited(ticketParams){
+  const {id} = ticketParams;
+  const num = db.query(`SELECT COUNT FROM tickets WHERE expedited_by = ?`, [id])
+  return { num };
+}
+
 module.exports = {  
   createTable,
   getAll,
@@ -91,5 +103,7 @@ module.exports = {
   asignTicket,
   deleteById,
   getById,
-  getAllUncompleted
+  getAllUncompleted,
+  countAsigned,
+  countExpedited
 }

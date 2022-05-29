@@ -39,6 +39,25 @@ router.get('/:id', function(req, res, next) {
   }
 });
 
+
+router.get('/asigned/:as_id', function(req, res, next) {
+  try {
+    res.json(tickets.countAsigned(req.params));
+  } catch(err) {
+    console.error(`Error occured: `, err.message);
+    next(err);
+  }
+});
+
+router.get('/expedited/:exp_id', function(req, res, next) {
+  try {
+    res.json(tickets.countExpedited(req.params));
+  } catch(err) {
+    console.error(`Error occured: `, err.message);
+    next(err);
+  }
+});
+
 router.put('/:id', function(req, res, next) {
   try {
     res.json(tickets.update(req.body, req.params));
