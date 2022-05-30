@@ -81,6 +81,18 @@ function getById(ticketParams) {
   return { data }
 }
 
+function countAsigned(ticketParams){
+  const {as_id} = ticketParams;
+  const num = db.query(`SELECT COUNT(*) as completed FROM tickets WHERE assigned_to = ? and completed = 1`, [as_id])
+  return { num };
+}
+
+function countExpedited(ticketParams){
+  const {exp_id} = ticketParams;
+  const num = db.query(`SELECT COUNT(*) as expedited FROM tickets WHERE expedited_by = ?`, [exp_id])
+  return { num };
+}
+
 function getUserRelatedTickets(ticketParams) {
   const {user_id} = ticketParams;
   console.log(ticketParams)
@@ -99,5 +111,7 @@ module.exports = {
   deleteById,
   getById,
   getAllUncompleted,
+  countAsigned,
+  countExpedited,
   getUserRelatedTickets
 }
