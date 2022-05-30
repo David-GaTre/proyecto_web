@@ -93,6 +93,13 @@ function countExpedited(ticketParams){
   return { num };
 }
 
+function getUserRelatedTickets(ticketParams) {
+  const {user_id} = ticketParams;
+  console.log(ticketParams)
+  const data = db.query(`SELECT * FROM tickets WHERE expedited_by = ? or assigned_to = ?`, [user_id, user_id]);
+  return { data }
+}
+
 module.exports = {  
   createTable,
   getAll,
@@ -105,5 +112,6 @@ module.exports = {
   getById,
   getAllUncompleted,
   countAsigned,
-  countExpedited
+  countExpedited,
+  getUserRelatedTickets
 }

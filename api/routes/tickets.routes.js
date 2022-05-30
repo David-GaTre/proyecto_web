@@ -58,6 +58,15 @@ router.get('/expedited/:exp_id', function(req, res, next) {
   }
 });
 
+router.get('/history/:user_id', function(req, res, next) {
+  try {
+    res.json(tickets.getUserRelatedTickets(req.params));
+  } catch(err) {
+    console.error(`Error occured: `, err.message);
+    next(err);
+  }
+});
+
 router.put('/:id', function(req, res, next) {
   try {
     res.json(tickets.update(req.body, req.params));
