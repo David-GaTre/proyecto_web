@@ -16,7 +16,7 @@ const perfil = Vue.createApp({
             tfecha: 'Fecha',
             fecha: ' ',
             tbalance: 'Balance',
-            balance: ' ',
+            balance: '0',
             tcreados: 'Tickets Creados',
             creados: ' ',
             tresueltos: 'Tickets Resueltos',
@@ -52,6 +52,9 @@ const perfil = Vue.createApp({
                 this.correo = email;
                 this.fecha = birth_day;
                 this.balance = balance;
+                if (!balance) {
+                    this.balance = '0'
+                }
             })
         },
         displayCreatedTickets() {
@@ -63,7 +66,7 @@ const perfil = Vue.createApp({
             .then((data) => {
                 const num = data;
                 console.log(num)
-                this.resueltos = num;
+                this.resueltos = num.num[0]['completed'];
             })
         },
         displayAsignedTickets() {
@@ -75,7 +78,7 @@ const perfil = Vue.createApp({
             .then((data) => {
                 const num = data;
                 console.log(num)
-                this.creados = num;
+                this.creados = num.num[0]['expedited'];
             })
         }
     },
