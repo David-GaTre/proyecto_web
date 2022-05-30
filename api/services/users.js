@@ -26,7 +26,6 @@ function getAll() {
 
 function create(userObj) {
   const {name,email,birth_day,password} = userObj;
-  console.log(userObj)
   const result = db.run(`INSERT INTO users (name,email,birth_day,password) VALUES (@name, @email, @birth_day, @password)`, {name, email, birth_day, password});
   let message = 'Error in creating user';
   if (result.changes) {

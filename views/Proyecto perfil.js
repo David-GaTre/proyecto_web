@@ -65,7 +65,6 @@ const perfil = Vue.createApp({
             .catch(error => console.error('Error:', error))
             .then((data) => {
                 const num = data;
-                console.log(num)
                 this.resueltos = num.num[0]['completed'];
             })
         },
@@ -77,7 +76,6 @@ const perfil = Vue.createApp({
             .catch(error => console.error('Error:', error))
             .then((data) => {
                 const num = data;
-                console.log(num)
                 this.creados = num.num[0]['expedited'];
             })
         }

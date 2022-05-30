@@ -22,7 +22,6 @@ router.get('/uncompleted', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     try {
-      console.log(req.body)  
       res.json(tickets.create(req.body));
     } catch(err) {
       console.error(`Error while adding tickets `, err.message);

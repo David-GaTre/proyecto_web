@@ -37,7 +37,6 @@ const ticket = Vue.createApp({
         price: this.price,
         tips: this.tips
       };
-      console.log(data)
 
       fetch(url, {
         method: 'POST',

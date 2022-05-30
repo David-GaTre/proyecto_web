@@ -6,7 +6,6 @@ var app = Vue.createApp({
     },
     computed:{
         grouped_tickets() {
-            console.log("hola")
             gt = [];
             this.tickets_2
             const chunkSize = 3;
