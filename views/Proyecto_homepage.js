@@ -19,8 +19,8 @@ const homeTop = Vue.createApp({
             .then(res => res.json())
             .catch(error => console.error('Error:', error))
             .then(data => u_data = data)
-            .catch(alert("Usuario y/o contraseña incorrectos"))
             .then(() => document.cookie = "user_id=" + u_data.data.id)
+            .catch(alert("Usuario y/o contraseña incorrectos"))
             .then(() => window.location.replace("http://localhost:3000/profile"))
 
         },

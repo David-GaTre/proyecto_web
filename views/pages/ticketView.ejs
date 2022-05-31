@@ -50,31 +50,30 @@
                     <div class="col" id = "app">
                         <div v-for = "tickets in grouped_tickets" class = "row">
                             <div v-for = "ticket in tickets" class = "col">
-                                <ticket :title = "ticket.title"></ticket>
+                                <ticket :titulo = "ticket.title"></ticket>
                             </div>
                         </div>
                     </div>
                     <!-- Modal -->
-                    <button data-modal-target="#modal" class="btn btn-primary">Open Modal</button>
+                    <button data-modal-target="#modal" class="btn btn-primary">Ver</button>
                     <div class="modal" id="modal">
                         <div class="modal-header">
-                            <div class="title">ticket.title</div>
+                            <div class="title">Example Modal</div>
+                            <p>hola</p>
                             <button data-close-button class="close-button">&times;</button>
                         </div>
                         <div class="modal-body">
                             test
                         </div>
-                    </div>
-                    <div id="overlay"></div>
+                      </div>
+                      <div id="overlay"></div>
                 </div>
             </div>
         </main>
     </body>
 
-    <link rel="stylesheet" href="../modal/ticket.modal.css">
     <script src="app.component.js"></script>
     <script src="ticket.component.js"></script>
-    <script src="../modal/ticket.modal.js"></script>
     <script>
         const mountedApp = app.mount('#app');
     </script>

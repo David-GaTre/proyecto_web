@@ -6,7 +6,7 @@ app.component('ticket', {
             <img class="card-img-top cardImage"  alt="Card image cap" align="center">
             <div class="card-body cardBodyInfo">
                 <div class="grid cardInfoContainer cardTextInfo">
-                    <h6 class="card-title cardTextInfo" align="left">{{title}}</h6>
+                    <h6 class="card-title cardTextInfo" align="left">{{titulo}}</h6>
                     <div class="row">
                         <div class="col-6">
                             <br>
@@ -20,7 +20,7 @@ app.component('ticket', {
     </div>`,
     props: {
         //titulo
-        'title': String,
+        'titulo': String,
         //tipo de favor
         'tipo': String,
         //descripcion del favor
