@@ -15,6 +15,11 @@ function createTable() {
           price REAL, 
           tips REAL,
           completed INTEGER DEFAULT 0 NOT NULL)`)
+  try {
+    db.exec("ALTER TABLE tickets ADD COLUMN canceled integer DEFAULT 0;")
+  } catch(e) {
+    console.log('Already created the column')
+  }
 }
 
 function getAll() {
@@ -23,7 +28,7 @@ function getAll() {
 }
 
 function getAllUncompleted() {
-  const data = db.query_no_params(`SELECT * FROM tickets WHERE completed = 0`);
+  const data = db.query_no_params(`SELECT * FROM tickets WHERE completed = 0 and canceled = 0`);
   return { data }
 }
 
@@ -60,6 +65,34 @@ function completeTicket(ticketParams) {
   const data = db.run(`UPDATE tickets 
                         SET completed = 1
                         WHERE id = ?`,[id]);
+  const data_ticket = db.query(`SELECT * FROM tickets WHERE id = ?`, [id]);
+  const user_expedited = db.query(`SELECT * FROM users WHERE id = ?`, [data_ticket[0].expedited_by]);
+  const user_assigned = db.query(`SELECT * FROM users WHERE id = ?`, [data_ticket[0].assigned_to]);
+  const balance_to_change = data_ticket[0].price + data_ticket[0].tips
+
+  const data_expedited = db.run(`UPDATE users 
+                                SET balance = balance - ?
+                                WHERE id = ?`,[balance_to_change, user_expedited[0].id]);
+
+  const data_assigned = db.run(`UPDATE users 
+                                SET balance = balance + ?
+                                WHERE id = ?`,[balance_to_change, user_assigned[0].id]);
+  return { data }
+}
+
+function cancelTicket(ticketParams) {
+  const {id} = ticketParams
+  const data = db.run(`UPDATE tickets 
+                        SET canceled = 1
+                        WHERE id = ?`,[id]);
+  
+  return { data }
+}
+
+function unasignTicket(id, asignee_id) {
+  const data = db.run(`UPDATE tickets 
+                        SET assigned_to = null
+                        WHERE id = ?`,[asignee_id, id]);
   return { data }
 }
 
@@ -81,7 +114,7 @@ function getById(ticketParams) {
   return { data }
 }
 
-function countAsigned(ticketParams){
+function countCompleted(ticketParams){
   const {as_id} = ticketParams;
   const num = db.query(`SELECT COUNT(*) as completed FROM tickets WHERE assigned_to = ? and completed = 1`, [as_id])
   return { num };
@@ -106,11 +139,13 @@ module.exports = {
   create,
   update,
   completeTicket,
+  unasignTicket,
+  cancelTicket,
   asignTicket,
   deleteById,
   getById,
   getAllUncompleted,
-  countAsigned,
+  countCompleted,
   countExpedited,
   getUserRelatedTickets
 }

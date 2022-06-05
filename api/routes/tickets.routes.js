@@ -41,7 +41,7 @@ router.get('/:id', function(req, res, next) {
 
 router.get('/asigned/:as_id', function(req, res, next) {
   try {
-    res.json(tickets.countAsigned(req.params));
+    res.json(tickets.countCompleted(req.params));
   } catch(err) {
     console.error(`Error occured: `, err.message);
     next(err);
