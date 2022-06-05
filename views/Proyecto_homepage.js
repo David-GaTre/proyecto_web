@@ -20,7 +20,7 @@ const homeTop = Vue.createApp({
             .catch(error => console.error('Error:', error))
             .then(data => u_data = data)
             .then(() => document.cookie = "user_id=" + u_data.data.id)
-            .then(() => window.location.replace("http://localhost:3000/profile"))
+            .then(() => window.location.replace(window.location.origin + "/profile"))
         },
     },
  });

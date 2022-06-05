@@ -47,7 +47,7 @@ const ticket = Vue.createApp({
         }).then(res => res.json())
         .catch(error => console.error('Error:', error))
         .then(response => console.log('Success:', response) )
-        .then(() => window.location.replace("http://localhost:3000/profile"))
+        .then(() => window.location.replace(window.location.origin + "/profile"))
     },
  }
 
