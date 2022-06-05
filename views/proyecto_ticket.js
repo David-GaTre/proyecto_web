@@ -28,7 +28,7 @@ const ticket = Vue.createApp({
     },
 
     handleSubmitTicket() {
-      var url = 'http://localhost:3000/tickets'
+      var url = window.location.origin + '/tickets'
       var data = {  expedited_by: parseInt(this.getCookie('user_id')),
         title: this.title,
         favour_type: this.favour_type,

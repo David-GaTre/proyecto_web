@@ -17,7 +17,7 @@ var app = Vue.createApp({
         },
         tickets_2(){
             var t_data
-            var url = 'http://localhost:3000/tickets/uncompleted'
+            var url = window.location.origin + '/tickets/uncompleted'
 
             fetch(url)
             .then(res => res.json())

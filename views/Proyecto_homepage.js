@@ -13,7 +13,7 @@ const homeTop = Vue.createApp({
     methods: {
         handleLogin() {
             var u_data
-            var url = 'http://localhost:3000/users/user_check/' + this.user + '&' + this.pass;
+            var url = window.location.origin + '/users/user_check/' + this.user + '&' + this.pass;
 
             fetch(url)
             .then(res => res.json())
@@ -45,7 +45,7 @@ const homeTop = Vue.createApp({
         handleSubmit() {
             this.boton = true;
             if (this.pass == this.passcon) {
-                var url = 'http://localhost:3000/users';
+                var url = window.location.origin + '/users';
                 var data = {  name: this.nombre,
                     email: this.correo,
                     birth_day: this.fecha,
