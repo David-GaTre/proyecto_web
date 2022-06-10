@@ -46,10 +46,10 @@ function getMultiple(page = 1) {
 }
 
 function create(ticketObj) {
-  const {expedited_by,title,favour_type,short_desc, instructions, price, tips} = ticketObj;
+  const {expedited_by,title,favour_type,short_desc, instructions, price, tips, start_loc, end_loc} = ticketObj;
   const result = db.run(`
-    INSERT INTO tickets (expedited_by,title,favour_type,short_desc, instructions, price, tips) VALUES 
-    (@expedited_by,@title,@favour_type,@short_desc, @instructions, @price, @tips)`, {expedited_by,title,favour_type,short_desc, instructions, price, tips});
+    INSERT INTO tickets (expedited_by,title,favour_type,short_desc, instructions, price, tips, start_loc, end_loc) VALUES 
+    (@expedited_by,@title,@favour_type,@short_desc, @instructions, @price, @tips, @start_loc, @end_loc)`, {expedited_by,title,favour_type,short_desc, instructions, price, tips, start_loc, end_loc});
   let message = 'Error in creating ticket';
   if (result.changes) {
     message = 'Ticket created successfully';
