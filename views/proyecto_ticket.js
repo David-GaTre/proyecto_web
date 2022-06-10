@@ -7,7 +7,8 @@ const ticket = Vue.createApp({
           short_desc: "",
           instructions: "",
           price: 0,
-          tips: 0
+          tips: 0,
+          image: "/imgs/tecdashlogo.png"
       }
   },
   methods: {
@@ -49,6 +50,19 @@ const ticket = Vue.createApp({
         .catch(error => console.error('Error:', error))
         .then(response => console.log('Success:', response) )
         .then(() => window.location.replace("http://localhost:3000/profile"))
+    },
+
+    changeImage(event) {
+      if (event.target.value == "Pedido") {
+        this.image = "/imgs/pedido.png";
+        console.log(event.target.value)
+      } else if (event.target.value == "Vuelta") {
+        this.image = "/imgs/vuelta.png";
+        console.log(event.target.value)
+      } else if (event.target.value == "Entrega") {
+        this.image = "/imgs/entrega.png";
+        console.log(event.target.value)
+      }
     },
  }
 
