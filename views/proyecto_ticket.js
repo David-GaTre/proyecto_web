@@ -8,7 +8,9 @@ const ticket = Vue.createApp({
           instructions: "",
           price: 0,
           tips: 0,
-          image: "/imgs/tecdashlogo.png"
+          image: "/imgs/tecdashlogo.png",
+          start_loc: "",
+          end_loc: "",
       }
   },
   methods: {
@@ -36,7 +38,9 @@ const ticket = Vue.createApp({
         short_desc: this.short_desc,
         instructions: this.instructions,
         price: this.price,
-        tips: this.tips
+        tips: this.tips,
+        start_loc: this.start_loc,
+        end_loc: this.end_loc
       };
 
       fetch(url, {

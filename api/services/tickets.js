@@ -20,6 +20,13 @@ function createTable() {
   } catch(e) {
     console.log('Already created the column')
   }
+
+  try {
+    db.exec("ALTER TABLE tickets ADD COLUMN start_loc TEXT;")
+    db.exec("ALTER TABLE tickets ADD COLUMN end_loc TEXT;")
+  } catch(e) {
+    console.log('Already created the location columns')
+  }
 }
 
 function getAll() {
@@ -39,10 +46,10 @@ function getMultiple(page = 1) {
 }
 
 function create(ticketObj) {
-  const {expedited_by,title,favour_type,short_desc, instructions, price, tips} = ticketObj;
+  const {expedited_by,title,favour_type,short_desc, instructions, price, tips, start_loc, end_loc} = ticketObj;
   const result = db.run(`
-    INSERT INTO tickets (expedited_by,title,favour_type,short_desc, instructions, price, tips) VALUES 
-    (@expedited_by,@title,@favour_type,@short_desc, @instructions, @price, @tips)`, {expedited_by,title,favour_type,short_desc, instructions, price, tips});
+    INSERT INTO tickets (expedited_by,title,favour_type,short_desc, instructions, price, tips, start_loc, end_loc) VALUES 
+    (@expedited_by,@title,@favour_type,@short_desc, @instructions, @price, @tips, @start_loc, @end_loc)`, {expedited_by,title,favour_type,short_desc, instructions, price, tips, start_loc, end_loc});
   let message = 'Error in creating ticket';
   if (result.changes) {
     message = 'Ticket created successfully';
@@ -132,6 +139,12 @@ function getUserRelatedTickets(ticketParams) {
   return { data }
 }
 
+function getUserActiveTickets(ticketParams) {
+  const {user_id} = ticketParams;
+  const data = db.query(`SELECT * FROM tickets WHERE (expedited_by = ? or assigned_to = ?) and canceled = 0`, [user_id, user_id]);
+  return { data }
+}
+
 module.exports = {  
   createTable,
   getAll,
@@ -147,5 +160,6 @@ module.exports = {
   getAllUncompleted,
   countCompleted,
   countExpedited,
-  getUserRelatedTickets
+  getUserRelatedTickets,
+  getUserActiveTickets
 }
