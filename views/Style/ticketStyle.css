@@ -7,7 +7,7 @@
     width: 100%;
     padding-left: 64%;
     height:  25%;
-    background-color: burlywood;
+    background-color: rgb(228, 199, 161);
 }
 
 .cardTextInfo{
@@ -15,6 +15,6 @@
 }
 
 .cardBodyInfo{
-    background-color: gray;
+    background-color: rgb(172, 172, 172);
     width: 100%;
 }
