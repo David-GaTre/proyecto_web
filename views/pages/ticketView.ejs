@@ -41,7 +41,7 @@
                     <div class = "col-2" id = "side-bar">
                         <div class="border-end h-100 blanco-fondo">
                             <div class="list-group list-group-mine">
-                                <a class="list-group-item  p-3 azul-fondo" href="/">Homepage</a>
+                                <a class="list-group-item  p-3 azul-fondo" href="/ticket_view">Homepage</a>
                                 <a class="list-group-item list-group-item-action p-3 azul-fondo" href="profile">Perfil</a>
                                 <a class="list-group-item list-group-item-action p-3 azul-fondo" href="ticket/new">Hacer un pedido</a>
                                 <a class="list-group-item list-group-item-action p-3 azul-fondo" href="/logout">Cerrar sesion</a>
@@ -51,7 +51,7 @@
                     <!-- Tickets -->
                     <div class="col-8">
                         <div v-for = "tickets in grouped_tickets" class = "row">
-                            <div v-for = "ticket in tickets" class = "col">
+                            <div v-for = "ticket in tickets" class = "col-4" style="display: flex; justify-content: center;">
                                 <ticket :id = "ticket.id" :titl = "ticket.title" :favt = "ticket.favour_type" :desc = "ticket.short_desc" :inst = "ticket.instructions" :pric = "ticket.price"></ticket>
                             </div>
                         </div>
@@ -60,8 +60,13 @@
                     <div class="col-2">
                         <br><br><br>
                         <div class="background">
-                            <div v-for = "ticket in tickets" class = "col">
-                                <ticket :id = "ticket.id" :titl = "ticket.title" :favt = "ticket.favour_type" :desc = "ticket.short_desc" :inst = "ticket.instructions" :pric = "ticket.price"></ticket>
+                            <br>
+                            <h3 style="text-align: center;"> Tickets activos</h3>
+                            <br>
+                            <div class="row" style="display: flex; justify-content: center;">
+                                <div v-for = "ticketuser in ticketsuser" class = "col-9" >
+                                    <ticket :id = "ticketsuser.id" :titl = "ticketuser.title" :favt = "ticketuser.favour_type" :desc = "ticketuser.short_desc" :inst = "ticketuser.instructions" :pric = "ticketuser.price"></ticket>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -72,7 +77,6 @@
 
     <script src="app.component.js"></script>
     <script src="ticket.component.js"></script>
-    <script src="sidebar.component.js"></script>
     <script>
         const mountedApp = app.mount('#app');
     </script>
