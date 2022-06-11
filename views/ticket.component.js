@@ -1,6 +1,6 @@
 app.component('ticket', {
     template: `
-        <div class = "col-9 cardContainer">
+        <div class = "col-xl-8 cardContainer">
             <br>
             <img class="card-img-top cardImage" alt="Card image cap">
             <div class="card-body cardBodyInfo">

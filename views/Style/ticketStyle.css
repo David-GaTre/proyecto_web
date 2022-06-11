@@ -9,7 +9,7 @@
     background-color: rgb(228, 199, 161);
     border-style: solid;
     border-width: 1px;
-    border-color: rgb(26, 26, 26);
+    border-color: rgb(120, 120, 120);
 }
 
 .cardTextInfo{
@@ -21,7 +21,7 @@
     border-style: solid;
     border-top-style: none;
     border-width:thin;
-    border-color: rgb(26, 26, 26);
+    border-color: rgb(120, 120, 120);
     border-bottom-right-radius: 5%;
     border-bottom-left-radius: 5%;
 }

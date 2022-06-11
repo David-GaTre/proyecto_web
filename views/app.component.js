@@ -21,12 +21,6 @@ var app = Vue.createApp({
             }
             return "";
         },
-        cardColor() {
-            // green #41be41 yellow #cccc33
-            var color = "";
-
-            return gt;
-        },
     },
     computed:{
         grouped_tickets() {
@@ -58,16 +52,19 @@ var app = Vue.createApp({
 
             return t_data, tu_data
         },
-        /*ticketsuser_2(){
-            var tu_data
-            var url = window.location.origin + '/tickets/active/2'
+        cardColor() {
+            // green #41be41 yellow #cccc33 gray #cfcfcf
+            var id_user = this.getCookie('user_id');
+            var color = ["#41be41", "#cccc33", "#cfcfcf"];
+            if(this.ticketsuser.expedired_by == id_user){
+                document.querySelector("cardBodyInfo").getElementsByClassName.background = color[0];
+            } else if(this.ticketsuser.assigned_to == id_user){
+                document.querySelector("cardBodyInfo").getElementsByClassName.background = color[1];
+            } else {
+                document.querySelector("cardBodyInfo").getElementsByClassName.background = color[2];
+            }
 
-            fetch(url)
-            .then(res => res.json())
-            .catch(error => console.error('Error:', error))
-            .then(data => t_data = data).then(data => this.ticketsuser = data.data).then(data => console.log(t_data.data))
-            
-            return tu_data
-        }*/
+            return gt;
+        },
     }
 })
