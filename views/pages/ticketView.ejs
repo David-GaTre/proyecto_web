@@ -52,7 +52,7 @@
                     <div class="col-8">
                         <div v-for = "tickets in grouped_tickets" class = "row">
                             <div v-for = "ticket in tickets" class = "col-sm-10 col-md-6 col-xl-4" style="display: flex; justify-content: center;">
-                                <ticket :id = "ticket.id" :titl = "ticket.title" :favt = "ticket.favour_type" :desc = "ticket.short_desc" :inst = "ticket.instructions" :pric = "ticket.price"></ticket>
+                                <ticket :id = "ticket.id" :titl = "ticket.title" :favt = "ticket.favour_type" :desc = "ticket.short_desc" :inst = "ticket.instructions" :pric = "ticket.price" @assign-ticket="assignTicket($event)"></ticket>
                             </div>
                         </div>
                     </div>

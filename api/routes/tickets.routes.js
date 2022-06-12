@@ -75,6 +75,15 @@ router.get('/active/:user_id', function(req, res, next) {
   }
 });
 
+router.put('/assign', function(req, res, next) {
+  try {
+    res.json(tickets.asignTicket(req.body));
+  } catch(err) {
+    console.error(`Error occured: `, err.message);
+    next(err);
+  }
+});
+
 router.put('/:id', function(req, res, next) {
   try {
     res.json(tickets.update(req.body, req.params));

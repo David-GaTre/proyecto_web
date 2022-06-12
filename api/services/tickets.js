@@ -103,10 +103,12 @@ function unasignTicket(id, asignee_id) {
   return { data }
 }
 
-function asignTicket(id, asignee_id) {
+function asignTicket(ticketObj) {
+  const {asignee_id,ticket_id} = ticketObj
+  
   const data = db.run(`UPDATE tickets 
                         SET assigned_to = ?
-                        WHERE id = ?`,[asignee_id, id]);
+                        WHERE id = ?`,[asignee_id, ticket_id]);
   return { data }
 }
 

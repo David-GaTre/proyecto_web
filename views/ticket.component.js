@@ -1,6 +1,6 @@
 app.component('ticket', {
     template: `
-        <div class = "col-xl-8 cardContainer">
+        <div class = "col-xl-8 cardContainer" >
             <br>
             <img class="card-img-top cardImage" alt="Card image cap">
             <div class="card-body cardBodyInfo">
@@ -12,7 +12,7 @@ app.component('ticket', {
                         </div>
                         <br>
                         <div class="col-sm-10 col-xl-6">
-                            <button class="btn btn-primary">{{pric}}</button>
+                            <button class="btn btn-primary assign" @click="$emit('assign-ticket', id)">$ {{pric}}</button>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@ app.component('ticket', {
     </div>`,
     props: {
         //id
-        'id': String,
+        'id': Number,
         //titulo
         'titl': String,
         //favour type
@@ -31,6 +31,6 @@ app.component('ticket', {
         //instructions
         'inst': String,
         //price
-        'pric': String,
+        'pric': Number,
     }
 })

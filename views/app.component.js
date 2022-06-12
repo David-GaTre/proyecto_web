@@ -21,6 +21,18 @@ var app = Vue.createApp({
             }
             return "";
         },
+
+        assignTicket(currTicket) {
+            const API_URL = window.location.origin + '/tickets/assign';
+            var data = {asignee_id: parseInt(this.getCookie('user_id')), ticket_id: currTicket};
+            fetch(API_URL,{
+                method: 'PUT',
+                headers:{
+                'Content-Type':'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json())
+        }
     },
     computed:{
         grouped_tickets() {
@@ -43,12 +55,12 @@ var app = Vue.createApp({
             fetch(url)
             .then(res => res.json())
             .catch(error => console.error('Error:', error))
-            .then(data => t_data = data).then(data => this.tickets = data.data).then(data => console.log(t_data.data))
+            .then(data => t_data = data).then(data => this.tickets = data.data)
 
             fetch(url2)
             .then(res => res.json())
             .catch(error => console.error('Error:', error))
-            .then(data => tu_data = data).then(data => this.ticketsuser = data.data).then(data => console.log(tu_data.data))
+            .then(data => tu_data = data).then(data => this.ticketsuser = data.data)
 
             return t_data, tu_data
         },
