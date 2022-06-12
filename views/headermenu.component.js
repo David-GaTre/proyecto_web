@@ -1,4 +1,4 @@
-app.component('headermenu', {
+header_app.component('headermenu', {
     template: `
     <div>
                 <nav class="navbar navbar-expand-sm navbar-dark azul-fondo flex-sm-nowrap flex-wrap">

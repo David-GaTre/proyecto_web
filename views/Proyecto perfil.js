@@ -1,3 +1,4 @@
+//import * as header_app from 'header_app.component.js'
 const perfil = Vue.createApp({
     created() {
         this.handleDisplay();
@@ -81,4 +82,5 @@ const perfil = Vue.createApp({
         }
     },
  });
- perfil.mount('#perfil')
+perfil.mount('#perfil')
+//header_app.mount('#header_app')
