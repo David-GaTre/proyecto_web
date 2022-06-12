@@ -35,7 +35,7 @@ function getAll() {
 }
 
 function getAllUncompleted() {
-  const data = db.query_no_params(`SELECT * FROM tickets WHERE completed = 0 and canceled = 0`);
+  const data = db.query_no_params(`SELECT * FROM tickets WHERE completed = 0 and canceled = 0 and assigned_to is null`);
   return { data }
 }
 
