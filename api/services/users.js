@@ -62,6 +62,12 @@ function getByEmailAndPass(userParams) {
   return { data }
 }
 
+function addBalance(userObj) {
+  const {id, bal} = userObj
+  const data = db.run(`UPDATE users SET balance = balance + ? WHERE id = ?`, [bal, id]);
+  return { data }
+}
+
 module.exports = {
   createTable,
   getAll,
@@ -69,5 +75,6 @@ module.exports = {
   update,
   deleteById,
   getById,
-  getByEmailAndPass
+  getByEmailAndPass,
+  addBalance
 }
