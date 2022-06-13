@@ -3,8 +3,8 @@ app.component('ticket', {
         <div class = "col-xl-8 cardContainer" >
             <br>
             <img class="card-img-top cardImage" alt="Card image cap">
-            <div class="card-body cardBodyInfo">
-                <div class="grid cardInfoContainer cardTextInfo '{{sty}}'" class=sty style={{sty}} XD>
+            <div class="card-body cardBodyInfo" :style="{ background: sty }" >
+                <div class="grid cardInfoContainer cardTextInfo">
                     <h6 class="card-title cardTextInfo">{{titl}}</h6>
                     <div class="row">
                         <div class="col-sm-10 col-xl-6">

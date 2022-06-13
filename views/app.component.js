@@ -48,22 +48,21 @@ var app = Vue.createApp({
                 let assignedToSameUser = this.tickets[i].assigned_to == id_user;
 
                 if(isComplete)
-                    this.tickets[i].sty = 'background:green;';
+                    this.tickets[i].sty = 'green';
 
                 else if(isCancelled)
-                    this.tickets[i].sty = 'background:red;';
+                    this.tickets[i].sty = 'red';
             
                 else if(expeditedBySameUser && isNullAssignment && isNotCancelled)
-                    this.tickets[i].sty = 'background:orange;';
-
+                    this.tickets[i].sty = 'orange';
 
                 else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled)
-                    this.tickets[i].sty = 'background:yellow;';
+                    this.tickets[i].sty = 'yellow';
 
                 else if(assignedToSameUser)
-                    this.tickets[i].sty = 'background:pink;';
+                    this.tickets[i].sty = 'pink';
                 else
-                    this.tickets[i].sty = 'background:blue;';
+                    this.tickets[i].sty = 'azure';
 
                 console.log(this.tickets[i]);
             }
@@ -79,22 +78,21 @@ var app = Vue.createApp({
                 let assignedToSameUser = this.ticketsuser[i].assigned_to == id_user;
 
                 if(isComplete)
-                    this.ticketsuser[i].sty = 'background:green;';
+                    this.ticketsuser[i].sty = 'green';
 
                 else if(isCancelled)
-                    this.ticketsuser[i].sty = 'background:red;';
+                    this.ticketsuser[i].sty = 'red';
             
                 else if(expeditedBySameUser && isNullAssignment && isNotCancelled)
-                    this.ticketsuser[i].sty = 'background:orange;';
-
+                    this.ticketsuser[i].sty = 'orange';
 
                 else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled)
-                    this.ticketsuser[i].sty = 'background:yellow;';
+                    this.ticketsuser[i].sty = 'yellow';
 
                 else if(assignedToSameUser)
-                    this.ticketsuser[i].sty = 'background:pink;';
+                    this.ticketsuser[i].sty = 'pink';
                 else
-                    this.ticketsuser[i].sty = 'background:blue;';
+                    this.ticketsuser[i].sty = 'azure';
 
                 console.log(this.ticketsuser[i]);
             }
@@ -115,9 +113,9 @@ var app = Vue.createApp({
         },
         tickets_2(){
             var t_data
-            var url = window.location.origin + '/tickets/uncompleted'
             var tu_data
             var id_user = this.getCookie('user_id')
+            var url = window.location.origin + '/tickets/uncompleted/' + id_user
             var url2 = window.location.origin + '/tickets/active/'+ id_user;
 
             fetch(url)
