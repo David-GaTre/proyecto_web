@@ -3,6 +3,7 @@ var app = Vue.createApp({
         return {
             tickets: [],
             ticketsuser: [],
+            id_user: "",
         }
     },
     methods: {
@@ -32,12 +33,77 @@ var app = Vue.createApp({
                 },
                 body: JSON.stringify(data)
             }).then(res => res.json())
-        }
+        },
+        
+        cardColor() {
+            var id_user = this.getCookie('user_id');
+            for(let i = 0; i < this.tickets.length;i++){
+
+                let isComplete = this.tickets[i].completed == 1;
+                let isCancelled = this.tickets[i].canceled == 1;
+                let expeditedBySameUser = this.tickets[i].expedited_by == id_user;
+                let isNullAssignment = this.tickets[i].assigned_to == null;
+                let isNotCancelled = this.tickets[i].canceled == 0;
+                let isNotNullAssignemnt = this.tickets[i].assigned_to != null;
+                let assignedToSameUser = this.tickets[i].assigned_to == id_user;
+
+                if(isComplete)
+                    this.tickets[i].sty = 'green';
+
+                else if(isCancelled)
+                    this.tickets[i].sty = 'red';
+            
+                else if(expeditedBySameUser && isNullAssignment && isNotCancelled)
+                    this.tickets[i].sty = 'orange';
+
+                else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled)
+                    this.tickets[i].sty = 'yellow';
+
+                else if(assignedToSameUser)
+                    this.tickets[i].sty = 'pink';
+                else
+                    this.tickets[i].sty = 'azure';
+
+                console.log(this.tickets[i]);
+            }
+
+            for(let i = 0; i < this.ticketsuser.length;i++){
+
+                let isComplete = this.ticketsuser[i].completed == 1;
+                let isCancelled = this.ticketsuser[i].canceled == 1;
+                let expeditedBySameUser = this.ticketsuser[i].expedited_by == id_user;
+                let isNullAssignment = this.ticketsuser[i].assigned_to == null;
+                let isNotCancelled = this.ticketsuser[i].canceled == 0;
+                let isNotNullAssignemnt = this.ticketsuser[i].assigned_to != null;
+                let assignedToSameUser = this.ticketsuser[i].assigned_to == id_user;
+
+                if(isComplete)
+                    this.ticketsuser[i].sty = 'green';
+
+                else if(isCancelled)
+                    this.ticketsuser[i].sty = 'red';
+            
+                else if(expeditedBySameUser && isNullAssignment && isNotCancelled)
+                    this.ticketsuser[i].sty = 'orange';
+
+                else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled)
+                    this.ticketsuser[i].sty = 'yellow';
+
+                else if(assignedToSameUser)
+                    this.ticketsuser[i].sty = 'pink';
+                else
+                    this.ticketsuser[i].sty = 'azure';
+
+                console.log(this.ticketsuser[i]);
+            }
+            
+        },
     },
     computed:{
         grouped_tickets() {
             gt = [];
             this.tickets_2
+            this.cardColor();
             const chunkSize = 3;
             for (let i = 0; i < this.tickets.length; i += chunkSize) {
                 const chunk = this.tickets.slice(i, i + chunkSize);
@@ -47,9 +113,9 @@ var app = Vue.createApp({
         },
         tickets_2(){
             var t_data
-            var url = window.location.origin + '/tickets/uncompleted'
             var tu_data
             var id_user = this.getCookie('user_id')
+            var url = window.location.origin + '/tickets/uncompleted/' + id_user
             var url2 = window.location.origin + '/tickets/active/'+ id_user;
 
             fetch(url)
@@ -61,22 +127,12 @@ var app = Vue.createApp({
             .then(res => res.json())
             .catch(error => console.error('Error:', error))
             .then(data => tu_data = data).then(data => this.ticketsuser = data.data)
-
-            return t_data, tu_data
-        },
-        cardColor() {
-            // green #41be41 yellow #cccc33 gray #cfcfcf
             var id_user = this.getCookie('user_id');
-            var color = ["#41be41", "#cccc33", "#cfcfcf"];
-            if(this.ticketsuser.expedired_by == id_user){
-                document.querySelector("cardBodyInfo").getElementsByClassName.background = color[0];
-            } else if(this.ticketsuser.assigned_to == id_user){
-                document.querySelector("cardBodyInfo").getElementsByClassName.background = color[1];
-            } else {
-                document.querySelector("cardBodyInfo").getElementsByClassName.background = color[2];
-            }
-
-            return gt;
+            return t_data, tu_data, gt, id_user
         },
+    },
+    mounted(){
+
+        
     }
 })

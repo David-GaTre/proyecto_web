@@ -11,9 +11,9 @@ router.get('/', function(req, res, next) {
   }
 });
 
-router.get('/uncompleted', function(req, res, next) {
+router.get('/uncompleted/:user_id', function(req, res, next) {
   try {
-    res.json(tickets.getAllUncompleted(req));
+    res.json(tickets.getAllUncompleted(req.params));
   } catch(err) {
     console.error(`Error while getting tickets `, err.message);
     next(err);
