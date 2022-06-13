@@ -4,7 +4,7 @@ app.component('ticket', {
             <br>
             <img class="card-img-top cardImage" alt="Card image cap">
             <div class="card-body cardBodyInfo">
-                <div class="grid cardInfoContainer cardTextInfo">
+                <div class="grid cardInfoContainer cardTextInfo '{{sty}}'" class=sty style={{sty}} XD>
                     <h6 class="card-title cardTextInfo">{{titl}}</h6>
                     <div class="row">
                         <div class="col-sm-10 col-xl-6">
@@ -32,5 +32,7 @@ app.component('ticket', {
         'inst': String,
         //price
         'pric': Number,
+        //style
+        'sty': String
     }
 })

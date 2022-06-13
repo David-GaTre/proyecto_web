@@ -36,31 +36,76 @@ var app = Vue.createApp({
         },
         
         cardColor() {
-            //Aqui se pueden encontrar otros metodos para hacer esto https://css-tricks.com/cycle-through-classes-html-element/
             var id_user = this.getCookie('user_id');
-            console.log(this.ticketsuser[0].completed)
-            if(this.ticketsuser.completed == 1){
-                classList.remove(cardBodyInfo);
-                classList.add(cardBodyInfoGreen);
-            } else if(this.ticketsuser.canceled == 1){
-                classList.remove(cardBodyInfo);
-                classList.add(cardBodyInfoRed);
-            } else if(this.ticketsuser.expedited_by == id_user && this.ticketsuser.assigned_to == null && this.ticketsuser.canceled == 0){
-                classList.remove(cardBodyInfo);
-                classList.add(cardBodyInfoOrange);
-            } else if(this.ticketsuser.expedited_by == id_user && this.ticketsuser.assigned_to != null && this.ticketsuser.canceled == 0){
-                classList.remove(cardBodyInfo);
-                classList.add(cardBodyInfoYellow);
-            } else if(this.ticketsuser.assigned_to == id_user){
-                classList.remove(cardBodyInfo);
-                classList.add(cardBodyInfoPink);
+            for(let i = 0; i < this.tickets.length;i++){
+
+                let isComplete = this.tickets[i].completed == 1;
+                let isCancelled = this.tickets[i].canceled == 1;
+                let expeditedBySameUser = this.tickets[i].expedited_by == id_user;
+                let isNullAssignment = this.tickets[i].assigned_to == null;
+                let isNotCancelled = this.tickets[i].canceled == 0;
+                let isNotNullAssignemnt = this.tickets[i].assigned_to != null;
+                let assignedToSameUser = this.tickets[i].assigned_to == id_user;
+
+                if(isComplete)
+                    this.tickets[i].sty = 'background:green;';
+
+                else if(isCancelled)
+                    this.tickets[i].sty = 'background:red;';
+            
+                else if(expeditedBySameUser && isNullAssignment && isNotCancelled)
+                    this.tickets[i].sty = 'background:orange;';
+
+
+                else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled)
+                    this.tickets[i].sty = 'background:yellow;';
+
+                else if(assignedToSameUser)
+                    this.tickets[i].sty = 'background:pink;';
+                else
+                    this.tickets[i].sty = 'background:blue;';
+
+                console.log(this.tickets[i]);
             }
+
+            for(let i = 0; i < this.ticketsuser.length;i++){
+
+                let isComplete = this.ticketsuser[i].completed == 1;
+                let isCancelled = this.ticketsuser[i].canceled == 1;
+                let expeditedBySameUser = this.ticketsuser[i].expedited_by == id_user;
+                let isNullAssignment = this.ticketsuser[i].assigned_to == null;
+                let isNotCancelled = this.ticketsuser[i].canceled == 0;
+                let isNotNullAssignemnt = this.ticketsuser[i].assigned_to != null;
+                let assignedToSameUser = this.ticketsuser[i].assigned_to == id_user;
+
+                if(isComplete)
+                    this.ticketsuser[i].sty = 'background:green;';
+
+                else if(isCancelled)
+                    this.ticketsuser[i].sty = 'background:red;';
+            
+                else if(expeditedBySameUser && isNullAssignment && isNotCancelled)
+                    this.ticketsuser[i].sty = 'background:orange;';
+
+
+                else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled)
+                    this.ticketsuser[i].sty = 'background:yellow;';
+
+                else if(assignedToSameUser)
+                    this.ticketsuser[i].sty = 'background:pink;';
+                else
+                    this.ticketsuser[i].sty = 'background:blue;';
+
+                console.log(this.ticketsuser[i]);
+            }
+            
         },
     },
     computed:{
         grouped_tickets() {
             gt = [];
             this.tickets_2
+            this.cardColor();
             const chunkSize = 3;
             for (let i = 0; i < this.tickets.length; i += chunkSize) {
                 const chunk = this.tickets.slice(i, i + chunkSize);
@@ -84,11 +129,12 @@ var app = Vue.createApp({
             .then(res => res.json())
             .catch(error => console.error('Error:', error))
             .then(data => tu_data = data).then(data => this.ticketsuser = data.data)
-
+            var id_user = this.getCookie('user_id');
             return t_data, tu_data, gt, id_user
         },
     },
     mounted(){
-        this.cardColor();
+
+        
     }
 })
