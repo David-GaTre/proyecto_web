@@ -3,6 +3,7 @@ var app = Vue.createApp({
         return {
             tickets: [],
             ticketsuser: [],
+            id_user: "",
         }
     },
     methods: {
@@ -32,7 +33,29 @@ var app = Vue.createApp({
                 },
                 body: JSON.stringify(data)
             }).then(res => res.json())
-        }
+        },
+        
+        cardColor() {
+            //Aqui se pueden encontrar otros metodos para hacer esto https://css-tricks.com/cycle-through-classes-html-element/
+            var id_user = this.getCookie('user_id');
+            console.log(this.ticketsuser[0].completed)
+            if(this.ticketsuser.completed == 1){
+                classList.remove(cardBodyInfo);
+                classList.add(cardBodyInfoGreen);
+            } else if(this.ticketsuser.canceled == 1){
+                classList.remove(cardBodyInfo);
+                classList.add(cardBodyInfoRed);
+            } else if(this.ticketsuser.expedited_by == id_user && this.ticketsuser.assigned_to == null && this.ticketsuser.canceled == 0){
+                classList.remove(cardBodyInfo);
+                classList.add(cardBodyInfoOrange);
+            } else if(this.ticketsuser.expedited_by == id_user && this.ticketsuser.assigned_to != null && this.ticketsuser.canceled == 0){
+                classList.remove(cardBodyInfo);
+                classList.add(cardBodyInfoYellow);
+            } else if(this.ticketsuser.assigned_to == id_user){
+                classList.remove(cardBodyInfo);
+                classList.add(cardBodyInfoPink);
+            }
+        },
     },
     computed:{
         grouped_tickets() {
@@ -62,21 +85,10 @@ var app = Vue.createApp({
             .catch(error => console.error('Error:', error))
             .then(data => tu_data = data).then(data => this.ticketsuser = data.data)
 
-            return t_data, tu_data
+            return t_data, tu_data, gt, id_user
         },
-        cardColor() {
-            // green #41be41 yellow #cccc33 gray #cfcfcf
-            var id_user = this.getCookie('user_id');
-            var color = ["#41be41", "#cccc33", "#cfcfcf"];
-            if(this.ticketsuser.expedired_by == id_user){
-                document.querySelector("cardBodyInfo").getElementsByClassName.background = color[0];
-            } else if(this.ticketsuser.assigned_to == id_user){
-                document.querySelector("cardBodyInfo").getElementsByClassName.background = color[1];
-            } else {
-                document.querySelector("cardBodyInfo").getElementsByClassName.background = color[2];
-            }
-
-            return gt;
-        },
+    },
+    mounted(){
+        this.cardColor();
     }
 })
