@@ -90,8 +90,17 @@
                     <div class="col-xl-3">
                     </div>
                     <div class="col-xl-3">
-                        <!-- Boton Metodos de Pago -->
-                        <button class="btn btn-primary">Metodos de pago</button>
+                        <!-- Boton Metodos de Pago/Añadir balance -->
+                            <div class="input-group mb-3 pr-4">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">$</span>
+                                </div>
+                                <input v-model="bal" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                  <span class="input-group-text">.00</span>
+                                </div>
+                            </div>
+                        <button class="btn btn-primary" @click="addBalanceToUser">Añadir balance</button>
                     </div>
                     <div class="col-xl-3">
                         <!-- Tickets Creados -->

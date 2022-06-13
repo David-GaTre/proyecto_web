@@ -21,7 +21,8 @@ const perfil = Vue.createApp({
             creados: ' ',
             tresueltos: 'Tickets Resueltos',
             resueltos: ' ',
-            id: ' '  
+            id: ' ' ,
+            bal: 0 
         }
     },
     methods: {
@@ -78,6 +79,18 @@ const perfil = Vue.createApp({
                 const num = data;
                 this.creados = num.num[0]['expedited'];
             })
+        },
+        addBalanceToUser() {
+            const API_URL = window.location.origin + '/users/add_balance';
+            var data = {id: parseInt(this.getCookie('user_id')), bal: this.bal};
+            fetch(API_URL,{
+                method: 'PUT',
+                headers:{
+                'Content-Type':'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json())
+            location.reload();
         }
     },
  });
