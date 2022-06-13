@@ -1,4 +1,4 @@
-sidebar_app.component('sidebar', {
+app.component('sidebar', {
     template: `
     <div class = "col-2" id = "side-bar">
     <div class="border-end h-100 blanco-fondo">

@@ -8,17 +8,14 @@
         <title>Perfil</title>
     </head>
     <body class = "h-100">
+        <div id = "app">
         <main class = "h-100">
-            <div id = "header_app">
-                <headermenu></headermenu>
-            </div>
+            <headermenu></headermenu>
 
         <div class="h-100">
             <div class="row h-100">
-                <div id = "sidebar_app">
                     <!-- Menu lateral -->
                     <sidebar></sidebar>
-                </div>
                 <div class="col">
             <div id="perfil" style="list-style-type: none;">
                 <!-- Row 1 Foto y Primer Set de Datos -->
@@ -81,19 +78,12 @@
             </div>
         </div>
         </main>
+        </div>
         <script src="Proyecto perfil.js"></script>
         <script src="app.component.js"></script>
-        <script src="header_app.component.js"></script>
-        <script src="sidebar_app.component.js"></script>
         <script src="headermenu.component.js"></script>
         <script src="sidebar.component.js"></script>
         <script>
             const mountedApp = app.mount('#app');
-        </script>
-        <script>
-            const mountedApp2 = app.mount('#header_app');
-        </script>
-        <script>
-            const mountedApp3 = app.mount('#sidebar_app');
         </script>
     </body>
