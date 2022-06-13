@@ -13,14 +13,15 @@ const homeTop = Vue.createApp({
     methods: {
         handleLogin() {
             var u_data
-            var url = 'http://localhost:3000/users/user_check/' + this.user + '&' + this.pass;
+            var url = window.location.origin + '/users/user_check/' + this.user + '&' + this.pass;
 
             fetch(url)
             .then(res => res.json())
             .catch(error => console.error('Error:', error))
             .then(data => u_data = data)
             .then(() => document.cookie = "user_id=" + u_data.data.id)
-            .then(() => window.location.replace("http://localhost:3000/profile"))
+            .catch(error => alert('El usuario o la contraseña son incorrectas'))
+            .then(() => window.location.replace(window.location.origin + "/profile"))
         },
     },
  });
@@ -38,34 +39,37 @@ const homeTop = Vue.createApp({
             passcon: '',
             registro: 'Registrarme!',
             equal: false,
-            boton: false
         }
     },
     methods: {
         handleSubmit() {
-            this.boton = true;
-            if (this.pass == this.passcon) {
-                var url = 'http://localhost:3000/users';
-                var data = {  name: this.nombre,
-                    email: this.correo,
-                    birth_day: this.fecha,
-                    password: this.pass,
-                };
-
-                fetch(url, {
-                method: 'POST',
-                body: JSON.stringify(data), 
-                headers:{
-                    'Content-Type': 'application/json'
-                }
-                }).then(res => res.json())
-                .catch(error => console.error('Error:', error))
-                .then(response => console.log('Success:', response) )
-                .then(() => this.equal=true);
-
+            var mailformat = new RegExp("[a-zA-Z0-9]+@tec.mx");
+            if (this.correo.match(mailformat)){
+                if (this.pass == this.passcon) {
+                    var url = window.location.origin + '/users';
+                    var data = {  name: this.nombre,
+                        email: this.correo,
+                        birth_day: this.fecha,
+                        password: this.pass,
+                    };
+    
+                    fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify(data), 
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                    }).then(res => res.json())
+                    .catch(error => console.error('Error:', error))
+                    .then(response => console.log('Success:', response) )
+                    .then(() => this.equal=true);
                 } else {
+                    alert("Las contraseñas deben de ser iguales");
                     this.equal = false;
                 }  
+            } else {
+                alert("Correo invalido");
+            }
             },
    }
  });

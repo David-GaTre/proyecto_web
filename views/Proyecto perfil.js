@@ -43,7 +43,7 @@ const perfil = Vue.createApp({
         },
         handleDisplay() {
             var id_user = this.getCookie('user_id')
-            var url = 'http://localhost:3000/users/user_check/' + id_user;
+            var url = window.location.origin + '/users/user_check/' + id_user;
             fetch(url)
             .then(res => res.json())
             .catch(error => console.error('Error:', error))
@@ -60,7 +60,7 @@ const perfil = Vue.createApp({
         },
         displayCreatedTickets() {
             var id_user = this.getCookie('user_id')
-            var url2 = 'http://localhost:3000/tickets/asigned/' + id_user;
+            var url2 = window.location.origin + '/tickets/asigned/' + id_user;
             fetch(url2)
             .then(res => res.json())
             .catch(error => console.error('Error:', error))
@@ -71,7 +71,7 @@ const perfil = Vue.createApp({
         },
         displayAsignedTickets() {
             var id_user = this.getCookie('user_id')
-            var url3 = 'http://localhost:3000/tickets/expedited/' + id_user;
+            var url3 = window.location.origin + '/tickets/expedited/' + id_user;
             fetch(url3)
             .then(res => res.json())
             .catch(error => console.error('Error:', error))

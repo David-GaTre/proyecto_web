@@ -7,7 +7,10 @@ const ticket = Vue.createApp({
           short_desc: "",
           instructions: "",
           price: 0,
-          tips: 0
+          tips: 0,
+          image: "/imgs/tecdashlogo.png",
+          start_loc: "",
+          end_loc: "",
       }
   },
   methods: {
@@ -28,14 +31,16 @@ const ticket = Vue.createApp({
     },
 
     handleSubmitTicket() {
-      var url = 'http://localhost:3000/tickets'
+      var url = window.location.origin + '/tickets'
       var data = {  expedited_by: parseInt(this.getCookie('user_id')),
         title: this.title,
         favour_type: this.favour_type,
         short_desc: this.short_desc,
         instructions: this.instructions,
         price: this.price,
-        tips: this.tips
+        tips: this.tips,
+        start_loc: this.start_loc,
+        end_loc: this.end_loc
       };
 
       fetch(url, {
@@ -47,7 +52,20 @@ const ticket = Vue.createApp({
         }).then(res => res.json())
         .catch(error => console.error('Error:', error))
         .then(response => console.log('Success:', response) )
-        .then(() => window.location.replace("http://localhost:3000/profile"))
+        .then(() => window.location.replace(window.location.origin + "/profile"))
+    },
+
+    changeImage(event) {
+      if (event.target.value == "Pedido") {
+        this.image = "/imgs/pedido.png";
+        console.log(event.target.value)
+      } else if (event.target.value == "Vuelta") {
+        this.image = "/imgs/vuelta.png";
+        console.log(event.target.value)
+      } else if (event.target.value == "Entrega") {
+        this.image = "/imgs/entrega.png";
+        console.log(event.target.value)
+      }
     },
  }
 

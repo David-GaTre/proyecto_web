@@ -28,12 +28,26 @@
                         <!-- Tipo de favor -->
                         <p> Tipo de favor * </p>
                         <div class="input-group mb-3">
-                            <select v-model="favour_type" class="custom-select" id="inputGroupSelect01">
+                            <select v-model="favour_type" class="custom-select" id="inputGroupSelect01" @change="changeImage($event)">
                               <option value="Entrega">Entrega</option>
                               <option value="Pedido">Pedido</option>
                               <option value="Vuelta">Vuelta</option>
                             </select>
                           </div>
+                    </div>
+                    <div class="row">
+                        <!-- Lugar de inicio -->
+                        <p> Lugar de inicio * </p>
+                        <div class="input-group mb-3">
+                            <input v-model="start_loc" type="text" class="form-control" placeholder="Lugar de inicio" aria-label="Lugar de inicio" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Lugar de fin -->
+                        <p> Lugar final * </p>
+                        <div class="input-group mb-3">
+                            <input v-model="end_loc" type="text" class="form-control" placeholder="Lugar final" aria-label="Lugar final" aria-describedby="basic-addon1">
+                        </div>
                     </div>
                     <div class="row">
                         <!-- Descripcion chica -->
@@ -85,7 +99,7 @@
                 <div class="col">
                     <div class="row">
                         <!-- Imagen deafult por cada favor-->
-                        <img src="https://images.theconversation.com/files/443350/original/file-20220131-15-1ndq1m6.jpg?ixlib=rb-1.1.0&rect=0%2C0%2C3354%2C2464&q=45&auto=format&w=926&fit=clip" alt="Avatar" width="250" height="250" style="border-radius: 60%;display:block;margin-left:auto;margin-right:auto;width:50%;">
+                        <img v-bind:src="image" alt="Avatar" width="250" height="250" style="border-radius: 60%;display:block;margin-left:auto;margin-right:auto;width:50%;">
                     </div>
                     <br>
                     <div class="row">

@@ -1,13 +1,15 @@
 
 .cardInfoContainer .cardButton{
-    width:100%;
+    width: 100%;
 }
 
 .cardImage{
-    width: 100%;
     padding-left: 64%;
     height:  25%;
-    background-color: burlywood;
+    background-color: rgb(228, 199, 161);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(120, 120, 120);
 }
 
 .cardTextInfo{
@@ -15,6 +17,11 @@
 }
 
 .cardBodyInfo{
-    background-color: gray;
-    width: 100%;
+    background-color: rgb(207, 207, 207);
+    border-style: solid;
+    border-top-style: none;
+    border-width:thin;
+    border-color: rgb(120, 120, 120);
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 5%;
 }

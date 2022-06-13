@@ -41,7 +41,7 @@ router.get('/:id', function(req, res, next) {
 
 router.get('/asigned/:as_id', function(req, res, next) {
   try {
-    res.json(tickets.countAsigned(req.params));
+    res.json(tickets.countCompleted(req.params));
   } catch(err) {
     console.error(`Error occured: `, err.message);
     next(err);
@@ -60,6 +60,24 @@ router.get('/expedited/:exp_id', function(req, res, next) {
 router.get('/history/:user_id', function(req, res, next) {
   try {
     res.json(tickets.getUserRelatedTickets(req.params));
+  } catch(err) {
+    console.error(`Error occured: `, err.message);
+    next(err);
+  }
+});
+
+router.get('/active/:user_id', function(req, res, next) {
+  try {
+    res.json(tickets.getUserActiveTickets(req.params));
+  } catch(err) {
+    console.error(`Error occured: `, err.message);
+    next(err);
+  }
+});
+
+router.put('/assign', function(req, res, next) {
+  try {
+    res.json(tickets.asignTicket(req.body));
   } catch(err) {
     console.error(`Error occured: `, err.message);
     next(err);

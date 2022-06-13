@@ -14,6 +14,7 @@ function createTable() {
   } catch(e) {
     console.log('Already created the column')
   }
+  db.exec("UPDATE users SET balance=0 WHERE balance is null;")
 }
 
 function getAll() {

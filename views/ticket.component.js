@@ -1,29 +1,36 @@
 app.component('ticket', {
     template: `
-    <div class="ticketPreview">
-        <div class = "col-4 cardContainer">
+        <div class = "col-xl-8 cardContainer" >
             <br>
-            <img class="card-img-top cardImage"  alt="Card image cap" align="center">
+            <img class="card-img-top cardImage" alt="Card image cap">
             <div class="card-body cardBodyInfo">
                 <div class="grid cardInfoContainer cardTextInfo">
-                    <h6 class="card-title cardTextInfo" align="left">{{d}}</h6>
+                    <h6 class="card-title cardTextInfo">{{titl}}</h6>
                     <div class="row">
-                        <div class="col-6">
-                            <br>
-                            <h6 class="card-text cardTextInfo" align = "left">{{l}}<br>{{p}}</h6>
+                        <div class="col-sm-10 col-xl-6">
+                            <h6 class="card-text cardTextInfo">{{favt}}<br>{{desc}}<br>{{inst}}</h6>
                         </div>
-                        <div class="col-6">
-                            <a href="{{h}}" class="btn btn-primary cardButton">Ver</a>
+                        <br>
+                        <div class="col-sm-10 col-xl-6">
+                            <button class="btn btn-primary assign" @click="$emit('assign-ticket', id)">$ {{pric}}</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <br>
     </div>`,
     props: {
-        'd': String,
-        'l': String,
-        'p': String,
-        'h': String
+        //id
+        'id': Number,
+        //titulo
+        'titl': String,
+        //favour type
+        'favt': String,
+        //short desc
+        'desc': String,
+        //instructions
+        'inst': String,
+        //price
+        'pric': Number,
     }
 })

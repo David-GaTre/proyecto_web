@@ -1,0 +1,9 @@
+.background{
+    background-color: rgb(165, 165, 165);
+    width: 100%;
+    border-left-style: solid;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color:  rgb(120, 120, 120);
+    border-width: 1px;
+}
