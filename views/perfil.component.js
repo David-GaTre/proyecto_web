@@ -8,7 +8,7 @@ app.component('perfil',{
                     </div>
                     <div class="col-xl-3 col-xs-9">
                         <!-- Foto de Perfil -->
-                        <img style="width:150px;height:150px;border-radius: 50%;" v-bind:src="img" aria-label= "Foto de perfil del usuario">
+                        <img style="width:250px;height:250px;border-radius: 50%;" v-bind:src="img" aria-label= "Foto de perfil del usuario">
                     </div>
                     <div class="col-xl-6 col-xs-12">
                         <!-- Nombre, Correo, Fecha de Nacimiento -->
@@ -28,8 +28,6 @@ app.component('perfil',{
                     <div class="col-xl-3">
                     </div>
                     <div class="col-xl-3">
-                        <!-- Boton Editar -->
-                        <button class="btn btn-primary">Editar</button>
                     </div>
                     <div class="col-xl-6">
                         <!-- Balance -->
@@ -77,7 +75,7 @@ data(){
     return{
         edit: 'Editar',
         pago: 'Metodos de pago',
-        img: 'https://cdn.discordapp.com/attachments/629532011148607499/931379101833527366/20220113_204305.jpg',
+        img: 'https://cdn.discordapp.com/attachments/629532011148607499/986347322147479582/unknown.png',
         tnombre: 'Nombre',
         nombre: ' ',
         tcorreo: 'Correo',
