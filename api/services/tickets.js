@@ -34,8 +34,9 @@ function getAll() {
   return { data }
 }
 
-function getAllUncompleted() {
-  const data = db.query_no_params(`SELECT * FROM tickets WHERE completed = 0 and canceled = 0 and assigned_to is null`);
+function getAllUncompleted(ticketParams) {
+  const {user_id} = ticketParams
+  const data = db.query(`SELECT * FROM tickets WHERE completed = 0 and canceled = 0 and assigned_to is null and expedited_by != ?`, [user_id]);
   return { data }
 }
 
@@ -143,7 +144,7 @@ function getUserRelatedTickets(ticketParams) {
 
 function getUserActiveTickets(ticketParams) {
   const {user_id} = ticketParams;
-  const data = db.query(`SELECT * FROM tickets WHERE (expedited_by = ? or assigned_to = ?) and canceled = 0`, [user_id, user_id]);
+  const data = db.query(`SELECT * FROM tickets WHERE (expedited_by = ? or assigned_to = ?) and canceled = 0 and completed != 1`, [user_id, user_id]);
   return { data }
 }
 

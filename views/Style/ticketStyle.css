@@ -25,3 +25,58 @@
     border-bottom-right-radius: 5%;
     border-bottom-left-radius: 5%;
 }
+
+/* Las completadas */
+.cardBodyInfoGreen{
+    background-color: rgb(80, 185, 80);
+    border-style: solid;
+    border-top-style: none;
+    border-width:thin;
+    border-color: rgb(120, 120, 120);
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+}
+
+/* Las que estan siendo hechas por un usuario y fueron creadas por el usuario actual */
+.cardBodyInfoYellow{
+    background-color: rgb(231, 228, 50);
+    border-style: solid;
+    border-top-style: none;
+    border-width:thin;
+    border-color: rgb(120, 120, 120);
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+}
+
+/* Las canceladas */
+.cardBodyInfoRed{
+    background-color: rgb(218, 55, 55);
+    border-style: solid;
+    border-top-style: none;
+    border-width:thin;
+    border-color: rgb(120, 120, 120);
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+}
+
+/* Las que no estan siendo hechas por un usuario y fueron creadas por el usuario actual */
+.cardBodyInfoOrange{
+    background-color: rgb(228, 120, 32);
+    border-style: solid;
+    border-top-style: none;
+    border-width:thin;
+    border-color: rgb(120, 120, 120);
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+}
+
+/* Las que esta haciendo el usuario */
+.cardBodyInfoPink{
+    background-color: rgb(221, 121, 221);
+    border-style: solid;
+    border-top-style: none;
+    border-width:thin;
+    border-color: rgb(120, 120, 120);
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+}

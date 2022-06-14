@@ -1,4 +1,71 @@
-const perfil = Vue.createApp({
+app.component('perfil',{
+    template: `<div id="perfil" style="list-style-type: none;">
+    <br><br>
+    <!-- Row 1 Foto y Primer Set de Datos -->
+    <div class="row">
+        <div class="col-xl-3 col-xs-9">
+        </div>
+        <div class="col-xl-3 col-xs-9">
+            <!-- Foto de Perfil -->
+            <img style="width:150px;height:150px;border-radius: 50%;" v-bind:src="img" aria-label= "Foto de perfil del usuario">
+        </div>
+        <div class="col-xl-6 col-xs-12">
+            <!-- Nombre, Correo, Fecha de Nacimiento -->
+            <h5>{{tnombre}}</h5>
+            <h5>{{nombre}}</h5>
+            <br>
+            <h5>{{tcorreo}}</h5>
+            <h5>{{correo}}</h5>
+            <br>
+            <h5>{{tfecha}}</h5>
+            <h5>{{fecha}}</h5>
+        </div>
+    </div>
+    <!-- Row 2 Boton Editar y Balance -->
+    <br>
+    <div class="row">
+        <div class="col-xl-3">
+        </div>
+        <div class="col-xl-3">
+            <!-- Boton Editar -->
+            <button class="btn btn-primary">Editar</button>
+        </div>
+        <div class="col-xl-6">
+            <!-- Balance -->
+            <h5>{{tbalance}}</h5>
+            <h5>{{balance}}</h5>
+        </div>
+    </div>
+    <!-- Row 3 Boton Pagos, Creados y Tomados -->
+    <br>
+    <div class="row">
+        <div class="col-xl-3">
+        </div>
+        <div class="col-xl-3">
+            <!-- Boton Metodos de Pago/Añadir balance -->
+                <div class="input-group mb-3 pr-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input v-model="bal" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <div class="input-group-append">
+                      <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+            <button class="btn btn-primary" @click="addBalanceToUser">Añadir balance</button>
+        </div>
+        <div class="col-xl-3">
+            <!-- Tickets Creados -->
+            <h5>{{tcreados}}</h5>
+            <h5>{{creados}}</h5>
+        </div>
+        <div class="col-xl-3">
+            <!-- Tickets Resuletos -->
+            <h5>{{tresueltos}}</h5>
+            <h5>{{resueltos}}</h5> 
+        </div>
+    </div>
+</div>`,
     created() {
         this.handleDisplay();
         this.displayAsignedTickets();
@@ -94,4 +161,3 @@ const perfil = Vue.createApp({
         }
     },
  });
- perfil.mount('#perfil')

@@ -37,6 +37,15 @@ router.get('/user_check/:user&:pass', function(req, res, next) {
   }
 });
 
+router.put('/add_balance', function(req, res, next) {
+  try {
+    const res_data = res.json(users.addBalance(req.body));
+  } catch(err) {
+    console.error(`Error occured: `, err.message);
+    next(err);
+  }
+});
+
 router.get('/user_check/:id', function(req, res, next) {
   try {
     res.json(users.getById(req.params));
