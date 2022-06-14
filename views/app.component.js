@@ -228,7 +228,7 @@ var app = Vue.createApp({
         tickets_3(){
             var t_data
 
-            var url = 'http://localhost:3000/tickets//history/:user_id'
+            var url =  window.location.origin + '/tickets/history/:user_id'
             // copie esto aqui porque marcaba error de que no existia (url 2)
             var tu_data
             var id_user = this.getCookie('user_id')

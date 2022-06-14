@@ -33,7 +33,7 @@ var history = Vue.createApp({
 
         tickets_2(){
             var t_data
-            var url = 'http://localhost:3000/tickets/history/' + this.getCookie(user_id)
+            var url =  window.location.origin + '/tickets/history/' + this.getCookie(user_id)
             console.log(url)
             fetch(url)
             .then(res => res.json())

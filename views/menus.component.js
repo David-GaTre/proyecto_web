@@ -17,7 +17,7 @@ var menus = Vue.createApp({
         },
         tickets_2(){
             var t_data
-            var url = 'http://localhost:3000/tickets//history/:user_id'
+            var url =  window.location.origin + '/tickets/history/:user_id'
 
             fetch(url)
             .then(res => res.json())
