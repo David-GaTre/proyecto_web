@@ -142,22 +142,22 @@ var app = Vue.createApp({
                 let assignedToSameUser = this.ticketshistorial[i].assigned_to == id_user;
 
                 if(isComplete) {
-                    this.ticketshistorial[i].sty = 'green';
+                    this.ticketshistorial[i].sty = 'rgb(80, 185, 80)';
                     this.ticketshistorial[i].but = 'none';
                 } else if(isCancelled){
-                    this.ticketshistorial[i].sty = 'red';
+                    this.ticketshistorial[i].sty = 'rgb(218, 55, 55)';
                     this.ticketshistorial[i].but = 'none';
                 } else if(expeditedBySameUser && isNullAssignment && isNotCancelled) {
-                    this.ticketshistorial[i].sty = 'orange';
+                    this.ticketshistorial[i].sty = 'rgb(228, 120, 32)';
                     this.ticketshistorial[i].but = 'cancel';
                 } else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled) {
-                    this.ticketshistorial[i].sty = 'yellow';
+                    this.ticketshistorial[i].sty = 'rgb(231, 228, 50)';
                     this.ticketshistorial[i].but = 'complete';
                 } else if(assignedToSameUser) {
-                    this.ticketshistorial[i].sty = 'pink';
+                    this.ticketshistorial[i].sty = 'rgb(106, 192, 183)';
                     this.ticketshistorial[i].but = 'none';
                 } else {
-                    this.ticketshistorial[i].sty = 'azure';
+                    this.ticketshistorial[i].sty = 'rgb(218, 55, 55)';
                     this.ticketshistorial[i].but = 'assign';
                 }
             }
