@@ -44,7 +44,7 @@ app.component('ticket', {
         'sty': String,
         //button action
         'but': String,
-        // image
+        //image
         'img': String
     }
 })
