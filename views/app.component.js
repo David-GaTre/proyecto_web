@@ -78,22 +78,22 @@ var app = Vue.createApp({
                 let assignedToSameUser = this.tickets[i].assigned_to == id_user;
 
                 if(isComplete) {
-                    this.tickets[i].sty = 'green';
+                    this.tickets[i].sty = 'rgb(80, 185, 80)';
                     this.tickets[i].but = 'none';
                 } else if(isCancelled){
-                    this.tickets[i].sty = 'red';
+                    this.tickets[i].sty = 'rgb(218, 55, 55)';
                     this.tickets[i].but = 'none';
                 } else if(expeditedBySameUser && isNullAssignment && isNotCancelled) {
-                    this.tickets[i].sty = 'orange';
+                    this.tickets[i].sty = 'rgb(228, 120, 32)';
                     this.tickets[i].but = 'cancel';
                 } else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled) {
-                    this.tickets[i].sty = 'yellow';
+                    this.tickets[i].sty = 'rgb(231, 228, 50)';
                     this.tickets[i].but = 'complete';
                 } else if(assignedToSameUser) {
-                    this.tickets[i].sty = 'pink';
+                    this.tickets[i].sty = 'rgb(221, 121, 221)';
                     this.tickets[i].but = 'none';
                 } else {
-                    this.tickets[i].sty = 'azure';
+                    this.tickets[i].sty = 'rgb(218, 55, 55);';
                     this.tickets[i].but = 'assign';
                 }
 
@@ -110,22 +110,22 @@ var app = Vue.createApp({
                 let assignedToSameUser = this.ticketsuser[i].assigned_to == id_user;
 
                 if(isComplete) {
-                    this.ticketsuser[i].sty = 'green';
+                    this.ticketsuser[i].sty = 'rgb(80, 185, 80)';
                     this.ticketsuser[i].but = 'none';
                 } else if(isCancelled){
-                    this.ticketsuser[i].sty = 'red';
+                    this.ticketsuser[i].sty = 'rgb(218, 55, 55)';
                     this.ticketsuser[i].but = 'none';
                 } else if(expeditedBySameUser && isNullAssignment && isNotCancelled) {
-                    this.ticketsuser[i].sty = 'orange';
+                    this.ticketsuser[i].sty = 'rgb(228, 120, 32)';
                     this.ticketsuser[i].but = 'cancel';
                 } else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled) {
-                    this.ticketsuser[i].sty = 'yellow';
+                    this.ticketsuser[i].sty = 'rgb(231, 228, 50)';
                     this.ticketsuser[i].but = 'complete';
                 } else if(assignedToSameUser) {
-                    this.ticketsuser[i].sty = 'pink';
+                    this.ticketsuser[i].sty = 'rgb(106, 192, 183)';
                     this.ticketsuser[i].but = 'none';
                 } else {
-                    this.ticketsuser[i].sty = 'azure';
+                    this.ticketsuser[i].sty = 'rgb(218, 55, 55)';
                     this.ticketsuser[i].but = 'assign';
                 }
                 console.log(this.ticketsuser[i])
@@ -210,7 +210,7 @@ var app = Vue.createApp({
             .catch(error => console.error('Error:', error))
             .then(data => tu_data = data).then(data => this.ticketsuser = data.data)
             var id_user = this.getCookie('user_id');
-            return t_data, tu_data, gt, id_user
+            return t_data, tu_data, gt
         },
         tickets_history(){
             console.log("tickets_history")
@@ -247,8 +247,4 @@ var app = Vue.createApp({
             return t_data, tu_data, gt, id_user
         },
     },
-    mounted(){
-
-        
-    }
 })
