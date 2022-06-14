@@ -8,7 +8,7 @@ app.component('ticket', {
                     <h6 class="card-title cardTextInfo" style="font-weight: bold;">{{titl}}</h6>
                     <div class="row">
                         <div class="col-sm-10 col-xl-6">
-                            <h6 class="card-text cardTextInfo">{{favt}}<br><br>{{desc}}<br><br>{{inst}}</h6>
+                            <h6 class="card-text cardTextInfo">Usuario: {{user_name}}<br><br>{{favt}}<br><br>{{desc}}<br><br>{{inst}}</h6>
                         </div>
                         <br>
                         <div class="col-sm-10 col-xl-10"  v-if="but === 'assign'">
@@ -28,6 +28,8 @@ app.component('ticket', {
     props: {
         //id
         'id': Number,
+        // nombre usuario
+        'user_name': String,
         //titulo
         'titl': String,
         //favour type

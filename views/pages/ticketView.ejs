@@ -21,7 +21,7 @@
                     <div class="col-8">
                         <div v-for = "tickets in grouped_tickets" class = "row">
                             <div v-for = "ticket in tickets" class = "col-sm-10 col-md-6 col-xl-4" style="display: flex; justify-content: center;">
-                                <ticket :id = "ticket.id" :titl = "ticket.title" :favt = "ticket.favour_type" :desc = "ticket.short_desc" :inst = "ticket.instructions" :pric = "ticket.price" :sty="ticket.sty" :but="ticket.but" @assign-ticket="assignTicket($event)"></ticket>
+                                <ticket :id = "ticket.id" :user_name="ticket.user_name" :titl = "ticket.title" :favt = "ticket.favour_type" :desc = "ticket.short_desc" :inst = "ticket.instructions" :pric = "ticket.price" :sty="ticket.sty" :but="ticket.but" @assign-ticket="assignTicket($event)"></ticket>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             <br>
                             <div class="row" style="display: flex; justify-content: center;">
                                 <div v-for = "ticketuser in ticketsuser" class = "col-11" >
-                                    <ticket :id = "ticketuser.id" :titl = "ticketuser.title" :favt = "ticketuser.favour_type" :desc = "ticketuser.short_desc" :inst = "ticketuser.instructions" :pric = "ticketuser.price" :sty="ticketuser.sty" :but="ticketuser.but" @cancel-ticket="cancelTicket($event)" @complete-ticket="completeTicket($event)"></ticket>
+                                    <ticket :id = "ticketuser.id" :user_name="ticketuser.user_name" :titl = "ticketuser.title" :favt = "ticketuser.favour_type" :desc = "ticketuser.short_desc" :inst = "ticketuser.instructions" :pric = "ticketuser.price" :sty="ticketuser.sty" :but="ticketuser.but" @cancel-ticket="cancelTicket($event)" @complete-ticket="completeTicket($event)"></ticket>
                                 </div>
                             </div>
                         </div>

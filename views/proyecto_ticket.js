@@ -43,16 +43,20 @@ const ticket = Vue.createApp({
         end_loc: this.end_loc
       };
 
-      fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data), 
-        headers: {
-            'Content-Type': 'application/json'
-        }
-        }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
-        .then(response => console.log('Success:', response) )
-        .then(() => window.location.replace(window.location.origin + "/profile"))
+      if (data.tips < 0 || data.price < 0) {
+        alert('No puedes poner precios negativos')
+      } else {
+        fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(data), 
+          headers: {
+              'Content-Type': 'application/json'
+          }
+          }).then(res => res.json())
+          .catch(error => console.error('Error:', error))
+          .then(response => console.log('Success:', response) )
+          .then(() => window.location.replace(window.location.origin + "/profile"))
+      }
     },
 
     changeImage(event) {
