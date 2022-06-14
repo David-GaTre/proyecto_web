@@ -4,7 +4,7 @@ var app = Vue.createApp({
             tickets: [],
             ticketsuser: [],
             ticketshistorial: [],
-            id_user: "",
+            id_user: ""
         }
     },
     methods: {
