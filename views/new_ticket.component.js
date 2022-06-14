@@ -1,5 +1,6 @@
 app.component('new_ticket',{
     template: `
+    <div class="col-1"></div>
     <div class="col-4">
     <br> <br>
     <div class="row">

@@ -5,26 +5,26 @@ app.component('ticket', {
             <img v-bind:src="img" class="card-img-top cardImage" alt="Card image cap">
             <div class="card-body cardBodyInfo" :style="{ background: sty }" >
                 <div class="grid cardInfoContainer cardTextInfo">
-                    <h6 class="card-title cardTextInfo" style="font-weight: bold;">{{titl}}</h6>
+                    <h6 class="card-title cardTextInfo" style="font-weight: bold;">{{titl}}</h6><hr>
                     <div class="row">
-                        <div class="col-sm-10 col-xl-6">
-                            <h6 class="card-text cardTextInfo">Usuario: {{user_name}}<br><br>{{favt}}<br><br>{{desc}}<br><br>{{inst}}</h6>
+                        <div class="col-sm-10 col-xl-12">
+                            <h6 class="card-text cardTextInfo">Usuario: {{user_name}}<br><br>Tipo: {{favt}}<br><br>Descripcion: {{desc}}<br><br>Instrucciones: {{inst}}<br><br></h6>
                         </div>
                         <br>
-                        <div class="col-sm-10 col-xl-10"  v-if="but === 'assign'">
+                        <div class="col-sm-10 col-xl-12" align="right" v-if="but === 'assign'">
                             <button class="btn btn-primary assign" @click="$emit('assign-ticket', id)">$ {{pric}}</button>
                         </div>
-                        <div class="col-sm-10 col-xl-10"  v-else-if="but === 'cancel'">
+                        <div class="col-sm-10 col-xl-12" align="right" v-else-if="but === 'cancel'">
                             <button class="btn btn-primary assign" @click="$emit('cancel-ticket', id)">Cancel</button>
                         </div>
-                        <div class="col-sm-10 col-xl-10"  v-else-if="but === 'complete'">
+                        <div class="col-sm-10 col-xl-12" align="right" v-else-if="but === 'complete'">
                             <button class="btn btn-primary assign" @click="$emit('complete-ticket', id)">Complete</button>
                         </div>
                     </div>
                 </div>
             </div>
             <br>
-    </div>`,
+        </div>`,
     props: {
         //id
         'id': Number,
