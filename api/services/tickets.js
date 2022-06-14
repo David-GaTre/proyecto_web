@@ -138,13 +138,13 @@ function countExpedited(ticketParams){
 
 function getUserRelatedTickets(ticketParams) {
   const {user_id} = ticketParams;
-  const data = db.query(`SELECT * FROM tickets WHERE expedited_by = ? or assigned_to = ?`, [user_id, user_id]);
+  const data = db.query(`SELECT t.* FROM tickets t join users u on u.id = t.expedited_by WHERE expedited_by = ? or assigned_to = ?`, [user_id, user_id]);
   return { data }
 }
 
 function getUserActiveTickets(ticketParams) {
   const {user_id} = ticketParams;
-  const data = db.query(`SELECT *, u.name as user_name FROM tickets t join users u on u.id = t.expedited_by WHERE (expedited_by = ? or assigned_to = ?) and canceled = 0 and completed != 1`, [user_id, user_id]);
+  const data = db.query(`SELECT t.*, u.name as user_name FROM tickets t join users u on u.id = t.expedited_by WHERE (expedited_by = ? or assigned_to = ?) and canceled = 0 and completed != 1`, [user_id, user_id]);
   return { data }
 }
 
