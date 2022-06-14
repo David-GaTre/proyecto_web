@@ -184,7 +184,7 @@ var app = Vue.createApp({
                 } else {
                     this.tickets[i].img = '/imgs/tecdashlogo.png';
                 }
-
+                this.tickets[i].tips = this.tickets[i].tips.toString();
             }
 
             for(let i = 0; i < this.ticketsuser.length;i++){
@@ -206,6 +206,7 @@ var app = Vue.createApp({
                 } else {
                     this.ticketsuser[i].img = '/imgs/tecdashlogo.png';
                 }
+                this.ticketsuser[i].tips = this.ticketsuser[i].tips.toString();
             }
 
             for(let i = 0; i < this.ticketshistorial.length;i++){
@@ -227,6 +228,8 @@ var app = Vue.createApp({
                 } else {
                     this.ticketshistorial[i].img = '/imgs/tecdashlogo.png';
                 }
+                
+                this.ticketshistorial[i].tips = this.ticketshistorial[i].tips.toString();
             }
         }
     },

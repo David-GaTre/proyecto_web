@@ -8,7 +8,7 @@ app.component('ticket', {
                     <h6 class="card-title cardTextInfo" style="font-weight: bold;">{{titl}}</h6><hr>
                     <div class="row">
                         <div class="col-sm-10 col-xl-12">
-                            <h6 class="card-text cardTextInfo">Usuario: {{user_name}}<br><br>Tipo: {{favt}}<br><br>Descripcion: {{desc}}<br><br>Instrucciones: {{inst}}<br><br></h6>
+                            <h6 class="card-text cardTextInfo">Usuario: {{user_name}}<br><br>Tipo: {{favt}}<br><br>Descripcion: {{desc}}<br><br>Instrucciones: {{inst}}<br><br>Propina: $ {{tips}}<br><br></h6>
                         </div>
                         <br>
                         <div class="col-sm-10 col-xl-12" align="right" v-if="but === 'assign'">
@@ -45,6 +45,8 @@ app.component('ticket', {
         //button action
         'but': String,
         //image
-        'img': String
+        'img': String,
+        //tips
+        'tips': String
     }
 })

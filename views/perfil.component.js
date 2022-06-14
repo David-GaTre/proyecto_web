@@ -32,7 +32,7 @@ app.component('perfil',{
                     <div class="col-xl-6">
                         <!-- Balance -->
                         <h5>{{tbalance}}</h5>
-                        <h5>{{balance}}</h5>
+                        <h5>$ {{balance}}</h5>
                     </div>
                 </div>
                 <!-- Row 3 Boton Pagos, Creados y Tomados -->
@@ -119,7 +119,7 @@ methods: {
                 this.nombre = name;
                 this.correo = email;
                 this.fecha = birth_day;
-                this.balance = balance;
+                this.balance = balance.toFixed(2);
                 if (!balance) {
                     this.balance = '0'
                 }
