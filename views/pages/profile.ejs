@@ -9,113 +9,26 @@
     </head>
     <body class = "h-100">
         <main class = "h-100">
-            <div id = "header">
-                <nav class="navbar navbar-expand-sm navbar-dark azul-fondo flex-sm-nowrap flex-wrap">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler flex-grow-sm-1 flex-grow-0 me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbar5">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    <img src="./imgs/tecdashlogo.png" width="30" height="30" class="d-inline-block align-top " alt="">
-                        <span class="navbar-brand flex-grow-1">Tec Dash</span>
-                        <div class="navbar-collapse collapse flex-grow-1 justify-content-right" id="navbar5">
-                            <ul class="navbar-nav mx-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="profile">Usuario</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="/logout">Cerrar sesion</a>
-                                </li>
-                                <li class="nav-item">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+        <div id = "app">
+            <headermenu></headermenu>
 
         <div class="h-100">
             <div class="row h-100">
                     <!-- Menu lateral -->
-                    <div class = "col-2" id = "side-bar">
-                        <div class="border-end h-100 blanco-fondo">
-                            <div class="list-group list-group-mine">
-                                <a class="list-group-item  p-3 azul-fondo" href="/ticket_view">Homepage</a>
-                                <a class="list-group-item list-group-item-action p-3 azul-fondo" href="profile">Perfil</a>
-                                <a class="list-group-item list-group-item-action p-3 azul-fondo" href="ticket/new">Hacer un pedido</a>
-                                <a class="list-group-item list-group-item-action p-3 azul-fondo" href="/logout">Cerrar sesion</a>
-                            </div>
-                        </div>
-                    </div>
+                    <sidebar></sidebar>
                 <div class="col">
-            <div id="perfil" style="list-style-type: none;">
-                <br><br>
-                <!-- Row 1 Foto y Primer Set de Datos -->
-                <div class="row">
-                    <div class="col-xl-3 col-xs-9">
-                    </div>
-                    <div class="col-xl-3 col-xs-9">
-                        <!-- Foto de Perfil -->
-                        <img style="width:250px;height:250px;border-radius: 50%;" v-bind:src="img" aria-label= "Foto de perfil del usuario">
-                    </div>
-                    <div class="col-xl-6 col-xs-12">
-                        <!-- Nombre, Correo, Fecha de Nacimiento -->
-                        <h5>{{tnombre}}</h5>
-                        <h5>{{nombre}}</h5>
-                        <br>
-                        <h5>{{tcorreo}}</h5>
-                        <h5>{{correo}}</h5>
-                        <br>
-                        <h5>{{tfecha}}</h5>
-                        <h5>{{fecha}}</h5>
-                    </div>
-                </div>
-                <!-- Row 2 Boton Editar y Balance -->
-                <br>
-                <div class="row">
-                    <div class="col-xl-3">
-                    </div>
-                    <div class="col-xl-3">
-                    </div>
-                    <div class="col-xl-6">
-                        <!-- Balance -->
-                        <h5>{{tbalance}}</h5>
-                        <h5>{{balance}}</h5>
-                    </div>
-                </div>
-                <!-- Row 3 Boton Pagos, Creados y Tomados -->
-                <br>
-                <div class="row">
-                    <div class="col-xl-3">
-                    </div>
-                    <div class="col-xl-3">
-                        <!-- Boton Metodos de Pago/Añadir balance -->
-                            <div class="input-group mb-3 pr-4">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">$</span>
-                                </div>
-                                <input v-model="bal" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                <div class="input-group-append">
-                                  <span class="input-group-text">.00</span>
-                                </div>
-                            </div>
-                        <button class="btn btn-primary" @click="addBalanceToUser">Añadir balance</button>
-                    </div>
-                    <div class="col-xl-3">
-                        <!-- Tickets Creados -->
-                        <h5>{{tcreados}}</h5>
-                        <h5>{{creados}}</h5>
-                    </div>
-                    <div class="col-xl-3">
-                        <!-- Tickets Resuletos -->
-                        <h5>{{tresueltos}}</h5>
-                        <h5>{{resueltos}}</h5> 
-                    </div>
-                </div>
+            <!--perfil-->
+            <perfil></perfil>
             </div>
             </div>
             </div>
-            </div>
-        
+        </div>
         </main>
-        <script src="Proyecto perfil.js"></script>
+        <script src="app.component.js"></script>
+        <script src="headermenu.component.js"></script>
+        <script src="sidebar.component.js"></script>
+        <script src="perfil.component.js"></script>
+        <script>
+            const mountedApp = app.mount('#app');
+        </script>
     </body>

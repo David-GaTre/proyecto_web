@@ -76,6 +76,15 @@ app.get('/ticket_view', (req, res) => {
   }
 });
 
+app.get('/ticket_history', (req, res) => {
+  session=req.session;
+  if(session.user_id && req.cookies['user_id']){
+    res.render('pages/ticketHistory');
+  } else {
+    res.redirect('/');
+  }
+});
+
 // Middleware para Vue.js router modo history
 const history = require('connect-history-api-fallback');
 app.use(history());

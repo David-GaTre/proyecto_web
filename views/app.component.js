@@ -3,6 +3,8 @@ var app = Vue.createApp({
         return {
             tickets: [],
             ticketsuser: [],
+            ticketshistorial: [],
+            id_user: ""
         }
     },
     methods: {
@@ -50,6 +52,7 @@ var app = Vue.createApp({
         },
 
         completeTicket(currTicket) {
+            console.log("completar ticket")
             const API_URL = window.location.origin + '/tickets/' + String(currTicket) + '/complete';
             var data = {};
             fetch(API_URL,{
@@ -127,6 +130,40 @@ var app = Vue.createApp({
                 }
                 console.log(this.ticketsuser[i])
             }
+
+            for(let i = 0; i < this.ticketshistorial.length;i++){
+
+                let isComplete = this.ticketshistorial[i].completed == 1;
+                let isCancelled = this.ticketshistorial[i].canceled == 1;
+                let expeditedBySameUser = this.ticketshistorial[i].expedited_by == id_user;
+                let isNullAssignment = this.ticketshistorial[i].assigned_to == null;
+                let isNotCancelled = this.ticketshistorial[i].canceled == 0;
+                let isNotNullAssignemnt = this.ticketshistorial[i].assigned_to != null;
+                let assignedToSameUser = this.ticketshistorial[i].assigned_to == id_user;
+
+                if(isComplete) {
+                    this.ticketshistorial[i].sty = 'green';
+                    this.ticketshistorial[i].but = 'none';
+                } else if(isCancelled){
+                    this.ticketshistorial[i].sty = 'red';
+                    this.ticketshistorial[i].but = 'none';
+                } else if(expeditedBySameUser && isNullAssignment && isNotCancelled) {
+                    this.ticketshistorial[i].sty = 'orange';
+                    this.ticketshistorial[i].but = 'cancel';
+                } else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled) {
+                    this.ticketshistorial[i].sty = 'yellow';
+                    this.ticketshistorial[i].but = 'complete';
+                } else if(assignedToSameUser) {
+                    this.ticketshistorial[i].sty = 'pink';
+                    this.ticketshistorial[i].but = 'none';
+                } else {
+                    this.ticketshistorial[i].sty = 'azure';
+                    this.ticketshistorial[i].but = 'assign';
+                }
+                console.log("hola historial but")
+                console.log(this.ticketshistorial[i].but)
+                console.log(this.ticketshistorial[i])
+            }
             
         },
     },
@@ -140,6 +177,20 @@ var app = Vue.createApp({
                 const chunk = this.tickets.slice(i, i + chunkSize);
                 gt.push(chunk);
             }
+            return gt;
+        },
+        grouped_tickets_history() {
+            gt = [];
+            this.tickets_history
+            this.cardColor()
+            const chunkSize = 3;
+            for (let i = 0; i < this.ticketshistorial.length; i += chunkSize) {
+                const chunk = this.ticketshistorial.slice(i, i + chunkSize);
+                gt.push(chunk);
+            }
+            console.log("historial")
+            console.log(this.ticketshistorial)
+            console.log(gt)
             return gt;
         },
         tickets_2(){
@@ -160,6 +211,40 @@ var app = Vue.createApp({
             .then(data => tu_data = data).then(data => this.ticketsuser = data.data)
             var id_user = this.getCookie('user_id');
             return t_data, tu_data, gt
+        },
+        tickets_history(){
+            console.log("tickets_history")
+            var t_data
+            var id_user = this.getCookie('user_id')
+            var url = window.location.origin + '/tickets/history/' + id_user
+
+            fetch(url)
+            .then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(data => t_data = data).then(data => this.ticketshistorial = data.data).then(data => console.log(t_data.data))
+
+            return t_data
+        },
+        tickets_3(){
+            var t_data
+
+            var url =  window.location.origin + '/tickets/history/:user_id'
+            // copie esto aqui porque marcaba error de que no existia (url 2)
+            var tu_data
+            var id_user = this.getCookie('user_id')
+            var url2 = window.location.origin + '/tickets/active/'+ id_user;
+
+            fetch(url)
+            .then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(data => t_data = data).then(data => this.tickets = data.data)
+
+            fetch(url2)
+            .then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(data => tu_data = data).then(data => this.ticketsuser = data.data)
+            var id_user = this.getCookie('user_id');
+            return t_data, tu_data, gt, id_user
         },
     },
 })
