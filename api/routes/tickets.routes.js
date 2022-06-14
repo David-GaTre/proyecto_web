@@ -102,5 +102,13 @@ router.put('/:id/complete', function(req, res, next) {
   }
 });
 
+router.put('/:id/cancel', function(req, res, next) {
+  try {
+    res.json(tickets.cancelTicket(req.params));
+  } catch(err) {
+    console.error(`Error occured: `, err.message);
+    next(err);
+  }
+});
 
 module.exports = router;

@@ -33,8 +33,36 @@ var app = Vue.createApp({
                 },
                 body: JSON.stringify(data)
             }).then(res => res.json())
+            location.reload();
         },
         
+        cancelTicket(currTicket) {
+            console.log(currTicket)
+            const API_URL = window.location.origin + '/tickets/' + String(currTicket) + '/cancel';
+            var data = {};
+            fetch(API_URL,{
+                method: 'PUT',
+                headers:{
+                'Content-Type':'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json())
+            location.reload();
+        },
+
+        completeTicket(currTicket) {
+            const API_URL = window.location.origin + '/tickets/' + String(currTicket) + '/complete';
+            var data = {};
+            fetch(API_URL,{
+                method: 'PUT',
+                headers:{
+                'Content-Type':'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json())
+            location.reload();
+        },
+
         cardColor() {
             var id_user = this.getCookie('user_id');
             for(let i = 0; i < this.tickets.length;i++){
@@ -42,29 +70,31 @@ var app = Vue.createApp({
                 let isComplete = this.tickets[i].completed == 1;
                 let isCancelled = this.tickets[i].canceled == 1;
                 let expeditedBySameUser = this.tickets[i].expedited_by == id_user;
-                let isNullAssignment = this.tickets[i].assigned_to == null;
+                let isNullAssignment = this.tickets[i].assigned_to == null ;
                 let isNotCancelled = this.tickets[i].canceled == 0;
                 let isNotNullAssignemnt = this.tickets[i].assigned_to != null;
                 let assignedToSameUser = this.tickets[i].assigned_to == id_user;
 
-                if(isComplete)
+                if(isComplete) {
                     this.tickets[i].sty = 'green';
-
-                else if(isCancelled)
+                    this.tickets[i].but = 'none';
+                } else if(isCancelled){
                     this.tickets[i].sty = 'red';
-            
-                else if(expeditedBySameUser && isNullAssignment && isNotCancelled)
+                    this.tickets[i].but = 'none';
+                } else if(expeditedBySameUser && isNullAssignment && isNotCancelled) {
                     this.tickets[i].sty = 'orange';
-
-                else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled)
+                    this.tickets[i].but = 'cancel';
+                } else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled) {
                     this.tickets[i].sty = 'yellow';
-
-                else if(assignedToSameUser)
+                    this.tickets[i].but = 'complete';
+                } else if(assignedToSameUser) {
                     this.tickets[i].sty = 'pink';
-                else
+                    this.tickets[i].but = 'none';
+                } else {
                     this.tickets[i].sty = 'azure';
+                    this.tickets[i].but = 'assign';
+                }
 
-                console.log(this.tickets[i]);
             }
 
             for(let i = 0; i < this.ticketsuser.length;i++){
@@ -77,24 +107,26 @@ var app = Vue.createApp({
                 let isNotNullAssignemnt = this.ticketsuser[i].assigned_to != null;
                 let assignedToSameUser = this.ticketsuser[i].assigned_to == id_user;
 
-                if(isComplete)
+                if(isComplete) {
                     this.ticketsuser[i].sty = 'green';
-
-                else if(isCancelled)
+                    this.ticketsuser[i].but = 'none';
+                } else if(isCancelled){
                     this.ticketsuser[i].sty = 'red';
-            
-                else if(expeditedBySameUser && isNullAssignment && isNotCancelled)
+                    this.ticketsuser[i].but = 'none';
+                } else if(expeditedBySameUser && isNullAssignment && isNotCancelled) {
                     this.ticketsuser[i].sty = 'orange';
-
-                else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled)
+                    this.ticketsuser[i].but = 'cancel';
+                } else if(expeditedBySameUser && isNotNullAssignemnt && isNotCancelled) {
                     this.ticketsuser[i].sty = 'yellow';
-
-                else if(assignedToSameUser)
+                    this.ticketsuser[i].but = 'complete';
+                } else if(assignedToSameUser) {
                     this.ticketsuser[i].sty = 'pink';
-                else
+                    this.ticketsuser[i].but = 'none';
+                } else {
                     this.ticketsuser[i].sty = 'azure';
-
-                console.log(this.ticketsuser[i]);
+                    this.ticketsuser[i].but = 'assign';
+                }
+                console.log(this.ticketsuser[i])
             }
             
         },

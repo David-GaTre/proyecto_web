@@ -144,7 +144,7 @@ function getUserRelatedTickets(ticketParams) {
 
 function getUserActiveTickets(ticketParams) {
   const {user_id} = ticketParams;
-  const data = db.query(`SELECT * FROM tickets WHERE (expedited_by = ? or assigned_to = ?) and canceled = 0`, [user_id, user_id]);
+  const data = db.query(`SELECT * FROM tickets WHERE (expedited_by = ? or assigned_to = ?) and canceled = 0 and completed != 1`, [user_id, user_id]);
   return { data }
 }
 

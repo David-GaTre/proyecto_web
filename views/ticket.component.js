@@ -8,11 +8,17 @@ app.component('ticket', {
                     <h6 class="card-title cardTextInfo">{{titl}}</h6>
                     <div class="row">
                         <div class="col-sm-10 col-xl-6">
-                            <h6 class="card-text cardTextInfo">{{favt}}<br>{{desc}}<br>{{inst}}</h6>
+                            <h6 class="card-text cardTextInfo">{{favt}} {{but}}<br>{{desc}}<br>{{inst}}</h6>
                         </div>
                         <br>
-                        <div class="col-sm-10 col-xl-6">
+                        <div class="col-sm-10 col-xl-6"  v-if="but === 'assign'">
                             <button class="btn btn-primary assign" @click="$emit('assign-ticket', id)">$ {{pric}}</button>
+                        </div>
+                        <div class="col-sm-10 col-xl-6"  v-else-if="but === 'cancel'">
+                            <button class="btn btn-primary assign" @click="$emit('cancel-ticket', id)">Cancel</button>
+                        </div>
+                        <div class="col-sm-10 col-xl-6"  v-else-if="but === 'complete'">
+                            <button class="btn btn-primary assign" @click="$emit('complete-ticket', id)">Complete</button>
                         </div>
                     </div>
                 </div>
@@ -33,6 +39,8 @@ app.component('ticket', {
         //price
         'pric': Number,
         //style
-        'sty': String
+        'sty': String,
+        //button action
+        'but': String
     }
 })
