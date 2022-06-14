@@ -6,9 +6,8 @@ const perfil = Vue.createApp({
     },
     data(){
         return{
-            edit: 'Editar',
             pago: 'Metodos de pago',
-            img: 'https://cdn.discordapp.com/attachments/629532011148607499/931379101833527366/20220113_204305.jpg',
+            img: 'https://cdn.discordapp.com/attachments/629532011148607499/986347322147479582/unknown.png',
             tnombre: 'Nombre',
             nombre: ' ',
             tcorreo: 'Correo',
@@ -83,14 +82,18 @@ const perfil = Vue.createApp({
         addBalanceToUser() {
             const API_URL = window.location.origin + '/users/add_balance';
             var data = {id: parseInt(this.getCookie('user_id')), bal: this.bal};
-            fetch(API_URL,{
-                method: 'PUT',
-                headers:{
-                'Content-Type':'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(res => res.json())
-            location.reload();
+            if (data.bal < 0) {
+                alert('Plis no pierdas dinero')
+            } else {
+                fetch(API_URL,{
+                    method: 'PUT',
+                    headers:{
+                    'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }).then(res => res.json())
+                location.reload();
+            }
         }
     },
  });
