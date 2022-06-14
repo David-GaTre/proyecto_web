@@ -148,6 +148,7 @@ app.component('perfil',{
             })
         },
         addBalanceToUser() {
+            console.log("add balance")
             const API_URL = window.location.origin + '/users/add_balance';
             var data = {id: parseInt(this.getCookie('user_id')), bal: this.bal};
             fetch(API_URL,{
