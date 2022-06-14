@@ -5,10 +5,10 @@ app.component('ticket', {
             <img class="card-img-top cardImage" alt="Card image cap">
             <div class="card-body cardBodyInfo" :style="{ background: sty }" >
                 <div class="grid cardInfoContainer cardTextInfo">
-                    <h6 class="card-title cardTextInfo">{{titl}}</h6>
+                    <h6 class="card-title cardTextInfo" style="font-weight: bold;">{{titl}}</h6>
                     <div class="row">
                         <div class="col-sm-10 col-xl-6">
-                            <h6 class="card-text cardTextInfo">{{favt}} {{but}}<br>{{desc}}<br>{{inst}}</h6>
+                            <h6 class="card-text cardTextInfo">{{favt}}<br><br>{{desc}}<br><br>{{inst}}</h6>
                         </div>
                         <br>
                         <div class="col-sm-10 col-xl-6"  v-if="but === 'assign'">
