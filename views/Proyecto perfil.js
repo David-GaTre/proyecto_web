@@ -6,9 +6,8 @@ const perfil = Vue.createApp({
     },
     data(){
         return{
-            edit: 'Editar',
             pago: 'Metodos de pago',
-            img: 'https://cdn.discordapp.com/attachments/629532011148607499/931379101833527366/20220113_204305.jpg',
+            img: 'https://cdn.discordapp.com/attachments/629532011148607499/986347322147479582/unknown.png',
             tnombre: 'Nombre',
             nombre: ' ',
             tcorreo: 'Correo',
