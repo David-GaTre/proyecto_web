@@ -11,7 +11,7 @@ app.component('headermenu', {
                         <div class="navbar-collapse collapse flex-grow-1 justify-content-right" id="navbar5">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="profile">Usuario</a>
+                                    <a class="nav-link text-white" href="/profile">Usuario</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="/logout">Cerrar sesion</a>
