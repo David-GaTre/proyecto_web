@@ -225,27 +225,6 @@ var app = Vue.createApp({
 
             return t_data
         },
-        tickets_3(){
-            var t_data
-
-            var url = 'http://localhost:3000/tickets//history/:user_id'
-            // copie esto aqui porque marcaba error de que no existia (url 2)
-            var tu_data
-            var id_user = this.getCookie('user_id')
-            var url2 = window.location.origin + '/tickets/active/'+ id_user;
-
-            fetch(url)
-            .then(res => res.json())
-            .catch(error => console.error('Error:', error))
-            .then(data => t_data = data).then(data => this.tickets = data.data)
-
-            fetch(url2)
-            .then(res => res.json())
-            .catch(error => console.error('Error:', error))
-            .then(data => tu_data = data).then(data => this.ticketsuser = data.data)
-            var id_user = this.getCookie('user_id');
-            return t_data, tu_data, gt, id_user
-        },
     },
     mounted(){
 
