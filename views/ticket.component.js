@@ -2,7 +2,7 @@ app.component('ticket', {
     template: `
         <div class = "col-xl-8 cardContainer" >
             <br>
-            <img class="card-img-top cardImage" alt="Card image cap">
+            <img v-bind:src="img" class="card-img-top cardImage" alt="Card image cap">
             <div class="card-body cardBodyInfo" :style="{ background: sty }" >
                 <div class="grid cardInfoContainer cardTextInfo">
                     <h6 class="card-title cardTextInfo" style="font-weight: bold;">{{titl}}</h6>
@@ -43,6 +43,8 @@ app.component('ticket', {
         //style
         'sty': String,
         //button action
-        'but': String
+        'but': String,
+        // image
+        'img': String
     }
 })

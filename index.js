@@ -69,11 +69,12 @@ app.get('/ticket/new', (req, res) => {
 
 app.get('/ticket_view', (req, res) => {
   session=req.session;
-  if(session.user_id && req.cookies['user_id']){
+  res.render('pages/ticketView');
+  /*if(session.user_id && req.cookies['user_id']){
     res.render('pages/ticketView');
   } else {
     res.redirect('/');
-  }
+  }*/
 });
 
 // Middleware para Vue.js router modo history
