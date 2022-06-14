@@ -160,9 +160,6 @@ var app = Vue.createApp({
                     this.ticketshistorial[i].sty = 'azure';
                     this.ticketshistorial[i].but = 'assign';
                 }
-                console.log("hola historial but")
-                console.log(this.ticketshistorial[i].but)
-                console.log(this.ticketshistorial[i])
             }
             
         },
@@ -210,6 +207,27 @@ var app = Vue.createApp({
                     this.ticketsuser[i].img = '/imgs/tecdashlogo.png';
                 }
             }
+
+            for(let i = 0; i < this.ticketshistorial.length;i++){
+                
+                let isPedido = this.ticketshistorial[i].favour_type == "Pedido";
+                let isEntrega = this.ticketshistorial[i].favour_type == "Entrega";
+                let isFavor = this.ticketshistorial[i].favour_type == "Favor";
+                let isDefault = this.ticketshistorial[i].favour_type == "tipo_favor";
+                
+
+                if(isPedido) {
+                    this.ticketshistorial[i].img = '/imgs/pedido.png';
+                } else if(isEntrega){
+                    this.ticketshistorial[i].img = '/imgs/entrega.png';
+                } else if(isFavor) {
+                    this.ticketshistorial[i].img = '/imgs/vuelta.png';
+                } else if(isDefault) {
+                    this.ticketshistorial[i].img = '/imgs/tecdashlogo.png';
+                } else {
+                    this.ticketshistorial[i].img = '/imgs/tecdashlogo.png';
+                }
+            }
         }
     },
     computed:{
@@ -229,6 +247,7 @@ var app = Vue.createApp({
             gt = [];
             this.tickets_history
             this.cardColor()
+            this.cardImage();
             const chunkSize = 3;
             for (let i = 0; i < this.ticketshistorial.length; i += chunkSize) {
                 const chunk = this.ticketshistorial.slice(i, i + chunkSize);
